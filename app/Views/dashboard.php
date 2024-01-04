@@ -1,0 +1,109 @@
+
+<main id="main-container">
+    <div class="content bg-image" style="background: #a0a0a0;">
+        <div class="push-50-t push-15 clearfix">
+            <div class="push-15-r pull-left animated fadeIn">
+                <img class="img-avatar img-avatar-thumb" src="<?php echo $profile['profile_pic']; ?>" alt="">
+            </div>
+            <h1 class="h2 text-white push-5-t animated zoomIn"><?php echo $username ?></h1>
+            <h2 class="h5 text-white-op animated zoomIn"><?php echo $profile['profile_tagline'] ?></h2>
+        </div>
+    </div>
+    <div class="content bg-white border-b">
+        <div class="row items-push text-uppercase">
+            <div class="col-xs-6 col-sm-3">
+                <div class="font-w700 text-gray-darker animated fadeIn">Systems</div>
+                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"></a>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="font-w700 text-gray-darker animated fadeIn">Games</div>
+                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo $howmany; ?></a>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="font-w700 text-gray-darker animated fadeIn">Avg Completeness</div>
+                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">100%</a>
+            </div>
+        </div>
+    </div>
+    <div class="content content-boxed">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <!-- Timeline -->
+                <div class="block">
+                    <div class="block-header bg-gray-lighter">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title"><i class="si si-game-controller"></i> Your Collection</h3>
+                    </div>
+                    <div class="block-content">
+                        <?php
+                        if (sizeof($collections) > 0) {
+                            foreach (array_keys($collections) AS $collection) {
+                                ?>
+                        <h2>
+                            <?php echo $collection; ?> 
+                            <a href='<?php echo base_url(); ?>/collection/manage/<?php echo $collection; ?>' title='Manage Collection'>
+                                <i class='fa fa-edit pull-right'></i>
+                            </a>
+                        </h2>
+                                <table class='table table-striped js-dataTable-full'>
+                                    <thead>
+                                        <tr>	
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th class='text-center'>Status</th>
+                                            <th class='text-center'>Case?</th>
+                                            <th class='text-center'>In Wrap?</th>
+                                            <th class='text-center'>With Manual?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $rownum = 1;
+                                        $statuses = [
+                                            '' => '',
+                                            'N' => 'New',
+                                            'B' => 'Beaten',
+                                            'C' => 'Completed',
+                                            'M' => 'Mastered',
+                                        ];
+                                        foreach (array_keys($collections[$collection]) AS $gamename) {
+                                            echo "<tr>
+								<td>$rownum</td>
+								<td>$gamename</td>
+                                                                <td class='text-center'>
+                                                                    <select name='{$collections[$collection][$gamename]['uuid']}_status' class='stat'>";
+                                            foreach ($statuses AS $k => $v) {
+                                            echo "<option value='$k' ".($collections[$collection][$gamename]['status'] == $k ? 'selected' : '').">$v</option>";
+                                            }
+                                            echo "</select>
+                                                                </td>";
+
+                                            foreach ($collections[$collection][$gamename]['stats'] AS $name => $stat) {
+                                                
+                                                echo "<td class='text-center'><input name='{$collections[$collection][$gamename]['uuid']}_$name' type='checkbox'" . ($stat ? 'checked' : '') . " class='stat'></td>";
+                                            }
+                                            echo "</tr>";
+                                            $rownum++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                                <?php
+                            }
+                        } else {
+                            echo "<h2>Time to start a new collection</h2>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
