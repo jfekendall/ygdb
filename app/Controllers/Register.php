@@ -36,12 +36,12 @@ class Register extends Controller {
 		$profileModel->save($data);
             $session = session();
             $session->setFlashdata('success', 'Welcome aboard! Just log in and see what all this site has to offer!');
-            return redirect()->to('.');
+            return redirect()->to('/');
         } else {
             $session = session();
             $session->setFlashdata('msg', "Something happened. Don't know where. Don't know what.");
             $data['validation'] = $this->validator;
-            return redirect()->to('.');
+            return redirect()->to('/');
         }
     }
 
