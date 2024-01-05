@@ -1,7 +1,7 @@
 <main id="main-container">
     <div class="content bg-image" style="background: #a0a0a0;">
         <div class="push-50-t push-15 clearfix">
-            <h1 class="h2 text-white push-5-t animated zoomIn"><?php echo $system ?></h1>
+            <h1 class="h2 text-white push-5-t animated zoomIn"><?php echo (isset($system) ? $system : 'Pick a System'); ?></h1>
         </div>
     </div>
     <div class="content content-boxed">

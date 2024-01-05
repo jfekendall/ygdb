@@ -11,7 +11,7 @@ class Home extends BaseController
 	if ( session()->get('isLoggedIn')){
                 $data = [];
                 $session = session();
-                $data['username'] = $session->get('name');
+                $data['username'] = $sideBar['username'] = $session->get('name');
                 $uid = $session->get('id');
                 
 		

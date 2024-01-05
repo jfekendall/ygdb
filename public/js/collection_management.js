@@ -5,7 +5,7 @@ $('.has').click(function () {
     if ($(this).prop('checked')) {
         $.ajax({
             type: "POST",
-            url: baseUrl + "/add",
+            url: baseUrl + "collection/add",
             data: "li=" + $(this).val()
         });
     } else {

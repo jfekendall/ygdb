@@ -35,10 +35,10 @@
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Manage Collections</span></a>
                                 <ul>
                                     <li>
-                                        <a href="<?php echo base_url(); ?>/collection/add"><i class='fa fa-plus'></i> Add New</a>
+                                        <a href="<?php echo base_url(); ?>collection/add"><i class='fa fa-plus'></i> Add New</a>
                                     </li>
                                     <?php foreach ($yourSystems AS $system) { ?>
-                                        <li><a href="<?php echo base_url(); ?>/collection/manage/<?php echo $system['system_name']; ?>"><?php echo $system['system_name']; ?></a></li>
+                                        <li><a href="<?php echo base_url(); ?>collection/manage/<?php echo $system['system_name']; ?>"><?php echo $system['system_name']; ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

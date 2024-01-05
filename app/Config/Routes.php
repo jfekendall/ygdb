@@ -39,9 +39,9 @@ $routes->get('collection/add', 'AddCollection::index');
 $routes->get('collection/manage/(:any)', 'ManageCollection::index/$1',['filter' => 'authGuard']);
 
 //Colleciton Management API
-$routes->post('collection/add', 'API/GameCollectionCRUD::add');
-$routes->post('collection/remove', 'API/GameCollectionCRUD::remove');
-$routes->post('statchange', 'API/GameCollectionCRUD::stats');
+$routes->post('collection/add', 'API\\GameCollectionCRUD::add');
+$routes->post('collection/remove', 'API\\GameCollectionCRUD::remove');
+$routes->post('statchange', 'API\\GameCollectionCRUD::stats');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
