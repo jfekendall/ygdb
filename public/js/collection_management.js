@@ -10,7 +10,7 @@ $('.has').click(function () {
     if ($(this).prop('checked')) {
         $.ajax({
             type: "POST",
-            url: baseUrl + "collection/add",
+            url: baseUrl + "/add",
             data: "li=" + $(this).val()
         });
     } else {
