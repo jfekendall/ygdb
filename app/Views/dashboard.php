@@ -13,15 +13,15 @@
         <div class="row items-push text-uppercase">
             <div class="col-xs-6 col-sm-3">
                 <div class="font-w700 text-gray-darker animated fadeIn">Systems</div>
-                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"></a>
+                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo sizeof($yourSystems);?></a>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="font-w700 text-gray-darker animated fadeIn">Games</div>
                 <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo $howmany; ?></a>
             </div>
             <div class="col-xs-6 col-sm-3">
-                <div class="font-w700 text-gray-darker animated fadeIn">Avg Completeness</div>
-                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">100%</a>
+               <!-- <div class="font-w700 text-gray-darker animated fadeIn">Avg Completeness</div>
+                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">100%</a> -->
             </div>
         </div>
     </div>

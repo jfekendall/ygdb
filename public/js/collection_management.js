@@ -1,5 +1,10 @@
 var getUrl = window.location;
 var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+if (getUrl.pathname.split('/')[1] === 'collection') {
+    $('#manage-collections-dropdown').addClass('open');
+}
+
 $('.has').click(function () {
     //Add to collection
     if ($(this).prop('checked')) {
@@ -18,7 +23,6 @@ $('.has').click(function () {
 });
 
 $('.stat').change(function () {
-    //Add to collection
     status = '';
     if ($(this).prop('nodeName') === 'INPUT') {
         if ($(this).prop('checked')) {

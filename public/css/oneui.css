@@ -6598,6 +6598,11 @@ a.block.block-link-hover3:active {
   -ms-transform: translateX(0);
   transform: translateX(0);
 }
+
+#manage-collections-dropdown li.active{
+    color: white;
+}
+
 .nav-main-header {
   position: fixed;
   top: 0;

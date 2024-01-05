@@ -31,8 +31,10 @@
                                 <a href="<?php echo base_url(); ?>"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Your Profile</span></a>
                             </li>
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">Your Stuff</span></li>
-                            <li>
-                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Manage Collections</span></a>
+                            <li id='manage-collections-dropdown'>
+                                <a class="nav-submenu" data-toggle="nav-submenu" href="#">
+                                    <i class="si si-badge"></i>
+                                    <span class="sidebar-mini-hide">Manage Collections</span></a>
                                 <ul>
                                     <li>
                                         <a href="<?php echo base_url(); ?>collection/add"><i class='fa fa-plus'></i> Add New</a>
