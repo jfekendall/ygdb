@@ -10,13 +10,13 @@ $('.has').click(function () {
     if ($(this).prop('checked')) {
         $.ajax({
             type: "POST",
-            url: baseUrl + "/add",
+            url: baseUrl + "collection/add",
             data: "li=" + $(this).val()
         });
     } else {
         $.ajax({
             type: "POST",
-            url: baseUrl + "/remove",
+            url: baseUrl + "collection/remove",
             data: "li=" + $(this).val()
         });
     }
@@ -34,7 +34,7 @@ $('.stat').change(function () {
 
     $.ajax({
         type: "POST",
-        url: baseUrl + "/statchange",
+        url: baseUrl + "statchange",
         data: "field=" + $(this).attr('name') + "&status=" + status
     }).success(function (data) {
         $('.toast').addClass('alert-success');
