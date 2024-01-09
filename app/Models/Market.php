@@ -13,5 +13,6 @@ class Market extends Model{
 
     protected $table = 'market';
     protected $primaryKey = 'id';
+    protected $allowedFields = ['market_name'];
 
 }
