@@ -5,7 +5,9 @@ use CodeIgniter\Model;
 
 class Developer extends Model{
 	protected $table = 'ygdb_developers';
-
+        protected $nameColumn = 'developer_name';
+        protected $allowedFields = ['developer_name'];
+        
 	public function getDevelopers($dev1 = false, $dev2 = false, $dev3 = false, $dev4 = false){
 
 		if (!$dev1 && !$dev2 && !$dev3 && !$dev4) {
