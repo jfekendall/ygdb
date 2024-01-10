@@ -1,3 +1,4 @@
+<?php helper('anchor');?>
 <main id="main-container">
     <div class="content bg-image" style="background: url('<?php echo base_url() . $system_info['system_banner'] ?>') #a0a0a0; background-size: cover;background-position: center;">
         <div class="push-50-t push-15 clearfix">
@@ -43,7 +44,7 @@
                                         <td>
                                             <input type='checkbox' name='<?php echo $rownum ?>' value='<?php echo $game['uuid'] ?>' <?php echo ($game['have'] ? 'checked' : ''); ?> class="has">
                                         </td>
-                                        <td><?php echo $game['game_1_title'] ?></td>
+                                        <td><?php echo anchor("game/{$game['uuid']}",  $game['game_1_title']);?></td>
                                         <td><?php echo $game['market_1'] ?></td>
                                         <?php if (date('d', strtotime($game['game_1_release_date'])) != '1') { ?>
                                             <td><?php echo date('F d, Y', strtotime($game['game_1_release_date'])) ?></td>

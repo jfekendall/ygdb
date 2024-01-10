@@ -32,19 +32,6 @@ class AssembleCollection extends BaseController {
                     'in_wrap' => $coll['in_wrap'],
                     'with_manual' => $coll['with_manual']
                 ];
-// $userCollection[$system['system_name']][$game['title']]['market'] = $line['market'];
-//$userCollection[$system['system_name']][$game['title']]['release_date'] = $line['release_date'];
-// $p = new Publisher();
-//$publisher = $p->getPublisher($line['publisher_1_id']);
-                /* if (!empty($publisher)) {
-                  $userCollection[$system['system_name']][$game['title']]['publisher'] = $publisher['publisher_name'];
-                  }
-
-                  if (!empty($line['developer_1_id'])) {
-                  $d = new Developer();
-                  $developers = $d->find([$line['developer_1_id'], $line['developer_2_id'], $line['developer_3_id'], $line['developer_4_id']]);
-                  $userCollection[$system['system_name']][$game['title']]['developers'] = $developers;
-                  } */
             }
         }
         ksort($userCollection);
@@ -52,6 +39,7 @@ class AssembleCollection extends BaseController {
     }
 
     public function allGamesOnSystem($system) {
+        helper('anchor');
         $session = session();
         $userid = $session->get('id');
         $s = new GameSystem();
@@ -64,7 +52,6 @@ class AssembleCollection extends BaseController {
             $m = new Market();
             $collection = new Collection();
             $ra[$iterator]['have'] = false;
-
             $market = $title = [];
             for ($i = 1; $i <= 3; $i++) {
                 if ($game["game_{$i}_market"]) {

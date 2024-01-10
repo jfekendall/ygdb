@@ -37,6 +37,7 @@ $routes->get('logoff', 'Login::logoff');
 $routes->post('register', 'Register::store');
 $routes->get('collection/add', 'AddCollection::index');
 $routes->get('collection/manage/(:any)', 'ManageCollection::index/$1',['filter' => 'authGuard']);
+$routes->get('game/(:any)', 'GameController::index/$1');
 
 //Colleciton Management API
 $routes->post('collection/add', 'API\\GameCollectionCRUD::add');
