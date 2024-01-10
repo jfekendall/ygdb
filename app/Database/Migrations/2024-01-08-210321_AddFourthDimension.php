@@ -14,6 +14,7 @@ class AddFourthDimension extends Migration
 
     public function down()
     {
-        //
+        $this->db->query("ALTER TABLE `ygdb_games` DROP COLUMN `game_4_market`");
+        $this->db->query("ALTER TABLE `ygdb_games` DROP COLUMN `game_4_release_date`");
     }
 }
