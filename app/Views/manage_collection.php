@@ -23,7 +23,7 @@
                         <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Your Collection</h3>
                     </div>
                     <div class="block-content">
-
+                        <input type="hidden" name="addAction" value="<?php echo site_url('collection/add'); ?>">
                         <table class='table table-bordered table-striped js-dataTable-full'>
                             <thead>	
                                 <tr>

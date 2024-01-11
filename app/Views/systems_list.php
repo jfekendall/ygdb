@@ -23,7 +23,7 @@
                         <?php
                         $rownum = 1;
                         foreach ($sys AS $s) {
-                            echo "<h2><a href='" . base_url() . "/collection/manage/{$s['system_name']}'>{$s['system_name']}</a></h2><hr>";
+                            echo "<h2>" . anchor("collection/manage/{$s['system_name']}", $s['system_name']) . "</h2><hr>";
                         }
                         ?>
                     </div>
