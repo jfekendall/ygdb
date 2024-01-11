@@ -10,7 +10,14 @@ use App\Models\Collection;
 
 class GameController extends BaseController {
 
-    public function index($game): void {
+    /**
+     * Method index
+     * 
+     * @author Justin Kendall
+     * @param string game
+     * @return void
+     */
+    public function index(string $game): void {
         $g = new Game();
         $this->data['gamedata'] = $g->find($game);
         $this->data['gamedata'] = array_merge($this->data['gamedata'], $this->getThingNames('Developer', $this->data['gamedata']));
@@ -19,7 +26,10 @@ class GameController extends BaseController {
 
         $collectionData = new Collection();
 
-        $this->data['personalstats'] = $collectionData->where(['game_uuid' => $this->data['gamedata']['uuid'], 'user_uuid' => $this->uid])->first();
+        $this->data['personalstats'] = $collectionData->where([
+                    'game_uuid' => $this->data['gamedata']['uuid'],
+                    'user_uuid' => $this->uid
+                ])->first();
 
         echo view('template_start');
         echo view('page_head', $this->sideBar);
@@ -28,7 +38,18 @@ class GameController extends BaseController {
         echo view('template_end');
     }
 
-    protected function getThingNames($thing, $game): array {
+    /**
+     * Method getThingNames
+     * 
+     * Translates normalized FKs to human readable
+     * 
+     * @author Justin Kendall
+     * @param string thing
+     * @param array game
+     * @return array
+     * @todo find a less hacky way of instantiating things
+     */
+    protected function getThingNames(string $thing, array $game): array {
         $ra = [];
         $Developer = new Developer();
         $Publisher = new Publisher();

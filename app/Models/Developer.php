@@ -1,21 +1,24 @@
-<?php 
+<?php
+
 namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Developer extends Model{
-	protected $table = 'ygdb_developers';
-        protected $nameColumn = 'developer_name';
-        protected $allowedFields = ['developer_name'];
-        
-        //TODO: figure out what the hell this is
-	public function getDevelopers($dev1 = false, $dev2 = false, $dev3 = false, $dev4 = false){
+class Developer extends Model {
 
-		if (!$dev1 && !$dev2 && !$dev3 && !$dev4) {
-			return false;
-    		}
+    /**
+     * @param string $table Base table for this Model
+     */
+    protected $table = 'ygdb_developers';
 
-//    		return $this->where_in('id',[$dev1, $dev2, $dev3, $dev4])->findAll();
-	}
+    /**
+     * @param array $nameColumn Which field has the value
+     */
+    protected $nameColumn = 'developer_name';
+
+    /**
+     * @param array $allowedFields Dictates what fields can be modified
+     */
+    protected $allowedFields = ['developer_name'];
 
 }

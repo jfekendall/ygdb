@@ -8,7 +8,14 @@ use Ramsey\Uuid\Uuid;
 
 class Register extends BaseController {
 
-    public function store() {
+    /**
+     * Method store
+     * 
+     * Validates and creates user
+     * @author Justin Kendall
+     * @return \CodeIgniter\HTTP\RedirectResponse
+     */
+    public function store(): \CodeIgniter\HTTP\RedirectResponse {
         helper(['form']);
         $rules = [
             'register-username' => 'required|min_length[2]|max_length[50]|is_unique[ygdb_users.ygdb_username]',

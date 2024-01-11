@@ -11,7 +11,14 @@ use CodeIgniter\Model;
  */
 class System extends Model {
 
+    /**
+     * @param string $table Base table for this Model
+     */
     protected $table = 'ygdb_systems';
+
+    /**
+     * @param array $allowedFields Dictates what fields can be modified
+     */
     protected $allowedFields = [
         'system_name',
         'system_banner',
@@ -19,7 +26,16 @@ class System extends Model {
         'system_end'
     ];
 
-    public function getSystemByName($sys = false): array {
+    /**
+     * Method getSystemByName
+     *
+     * Gets system based on name
+     * 
+     * @author Justin Kendall
+     * @param string sys
+     * @return array
+     */
+    public function getSystemByName(string $sys): array {
         return $this->where(['system_name' => $sys])->first();
     }
 

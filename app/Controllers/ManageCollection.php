@@ -5,7 +5,12 @@ namespace App\Controllers;
 use App\Models\GameSystem;
 
 class ManageCollection extends BaseController {
-
+/**
+     * Method index
+     * 
+     * @author Justin Kendall
+     * @return void
+     */
     public function index($system): void {
 
         $c = new AssembleCollection();

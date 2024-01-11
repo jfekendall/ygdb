@@ -6,13 +6,25 @@ use App\Models\UserModel;
 
 class Login extends BaseController {
 
+    /**
+     * Method index
+     * 
+     * @return void
+     */
     public function index(): void {
         echo view('template_start');
         echo view('login');
         echo view('template_end');
     }
 
-    public function loginAuth() {
+    /**
+     * Method loginAuth
+     * 
+     * Checks credentials for login
+     * 
+     * @return \CodeIgniter\HTTP\RedirectResponse
+     */
+    public function loginAuth(): \CodeIgniter\HTTP\RedirectResponse {
         $userModel = new UserModel();
 
         $username = $this->request->getVar('login-username');
@@ -42,7 +54,14 @@ class Login extends BaseController {
         }
     }
 
-    public function logoff() {
+    /**
+     * Method logoff
+     * 
+     * Logs user out
+     * 
+     * @return \CodeIgniter\HTTP\RedirectResponse
+     */
+    public function logoff(): \CodeIgniter\HTTP\RedirectResponse {
         $this->session->destroy();
         return redirect()->to('/');
     }

@@ -9,7 +9,16 @@ use App\Models\GameSystem;
 
 class AssembleCollection extends BaseController {
 
-    public function assembleAll($uid): array {
+    /**
+     * Method assembleAll
+     * 
+     * The getter for all games in a collection
+     * 
+     * @author Justin Kendall
+     * @param string uid
+     * @return array
+     */
+    public function assembleAll(string $uid): array {
 
         $userCollection = [];
 
@@ -35,6 +44,15 @@ class AssembleCollection extends BaseController {
         return $userCollection;
     }
 
+    /**
+     * Method allGamesOnSystem
+     * 
+     * Returns all games belonging to a system
+     * 
+     * @author Justin Kendall
+     * @param string system
+     * @return array
+     */
     public function allGamesOnSystem($system): array {
         $s = new GameSystem();
         $system = $s->where('system_name', $system)->first();
