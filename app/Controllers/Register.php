@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\UserModel;
 use App\Models\UserProfile;
+use Ramsey\Uuid\Uuid;
 
 class Register extends Controller {
 
@@ -19,21 +20,22 @@ class Register extends Controller {
         ];
         if ($this->validate($rules)) {
             $userModel = new UserModel();
-            $uuid = new UUID();
+            $u = Uuid::uuid4();
+            $uuid = $u->toString();
             $data = [
                 'ygdb_username' => $this->request->getVar('register-username'),
                 'ygdb_user_email' => $this->request->getVar('register-email'),
                 'ygdb_password' => password_hash($this->request->getVar('register-password'), PASSWORD_DEFAULT),
-                'user_uuid' => $uuid->generate()
+                'user_uuid' => $uuid
             ];
 
             $userModel->save($data);
-		$profileModel = new UserProfile();
-		$data = [
-			'ygdb_user_uuid' => $data['user_uuid'],
-			'profile_tagline' => "Member since ". date('F Y')
-		];
-		$profileModel->save($data);
+            $profileModel = new UserProfile();
+            $data = [
+                'ygdb_user_uuid' => $data['user_uuid'],
+                'profile_tagline' => "Member since " . date('F Y')
+            ];
+            $profileModel->save($data);
             $session = session();
             $session->setFlashdata('success', 'Welcome aboard! Just log in and see what all this site has to offer!');
             return redirect()->to('/');
