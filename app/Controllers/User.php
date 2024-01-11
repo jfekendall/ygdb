@@ -9,9 +9,9 @@ use App\Models\UserProfile;
  *
  * @author justin
  */
-class User extends BaseController{
+class User extends BaseController {
 
-    function getUserProfile($uuid) {
+    function getUserProfile($uuid): array {
         $p = new UserProfile();
         return $p->where('ygdb_user_uuid', $uuid)->first();
     }

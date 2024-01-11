@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use CodeIgniter\Model;
@@ -8,7 +9,7 @@ use CodeIgniter\Model;
  *
  * @author justin
  */
-class System extends Model{
+class System extends Model {
 
     protected $table = 'ygdb_systems';
     protected $allowedFields = [
@@ -18,19 +19,7 @@ class System extends Model{
         'system_end'
     ];
 
-    public function getSystem($sys = false) {
-        if ($sys === false) {
-            return false;
-        }
-
-        return $this->where(['id' => $sys])->first();
-    }
-
-    public function getSystemByName($sys = false) {
-        if ($sys === false) {
-            return false;
-        }
-
+    public function getSystemByName($sys = false): array {
         return $this->where(['system_name' => $sys])->first();
     }
 
