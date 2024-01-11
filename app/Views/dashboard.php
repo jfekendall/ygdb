@@ -13,15 +13,15 @@
         <div class="row items-push text-uppercase">
             <div class="col-xs-6 col-sm-3">
                 <div class="font-w700 text-gray-darker animated fadeIn">Systems</div>
-                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo sizeof($yourSystems);?></a>
+                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo sizeof($yourSystems); ?></a>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="font-w700 text-gray-darker animated fadeIn">Games</div>
                 <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo $howmany; ?></a>
             </div>
             <div class="col-xs-6 col-sm-3">
-               <!-- <div class="font-w700 text-gray-darker animated fadeIn">Avg Completeness</div>
-                <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">100%</a> -->
+                <!-- <div class="font-w700 text-gray-darker animated fadeIn">Avg Completeness</div>
+                 <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">100%</a> -->
             </div>
         </div>
     </div>
@@ -46,12 +46,12 @@
                         if (sizeof($collections) > 0) {
                             foreach (array_keys($collections) AS $collection) {
                                 ?>
-                        <h2>
-                            <?php echo $collection; ?> 
-                            <a href='<?php echo base_url(); ?>/collection/manage/<?php echo $collection; ?>' title='Manage Collection'>
-                                <i class='fa fa-edit pull-right'></i>
-                            </a>
-                        </h2>
+                                <h2>
+                                    <?php echo $collection; ?> 
+                                    <a href='<?php echo base_url(); ?>/collection/manage/<?php echo $collection; ?>' title='Manage Collection'>
+                                        <i class='fa fa-edit pull-right'></i>
+                                    </a>
+                                </h2>
                                 <table class='table table-striped js-dataTable-full'>
                                     <thead>
                                         <tr>	
@@ -76,17 +76,17 @@
                                         foreach (array_keys($collections[$collection]) AS $gamename) {
                                             echo "<tr>
 								<td>$rownum</td>
-								<td>$gamename</td>
+								<td>" . anchor("game/{$collections[$collection][$gamename]['uuid']}", $gamename) . "</td>
                                                                 <td class='text-center'>
                                                                     <select name='{$collections[$collection][$gamename]['uuid']}_status' class='stat'>";
                                             foreach ($statuses AS $k => $v) {
-                                            echo "<option value='$k' ".($collections[$collection][$gamename]['status'] == $k ? 'selected' : '').">$v</option>";
+                                                echo "<option value='$k' " . ($collections[$collection][$gamename]['status'] == $k ? 'selected' : '') . ">$v</option>";
                                             }
                                             echo "</select>
                                                                 </td>";
 
                                             foreach ($collections[$collection][$gamename]['stats'] AS $name => $stat) {
-                                                
+
                                                 echo "<td class='text-center'><input name='{$collections[$collection][$gamename]['uuid']}_$name' type='checkbox'" . ($stat ? 'checked' : '') . " class='stat'></td>";
                                             }
                                             echo "</tr>";

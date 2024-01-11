@@ -36,14 +36,13 @@
                             <tbody>
                                 <?php
                                 $rownum = 1;
-                                //Array ( [id] => 1 [game_id] => 1 [system_id] => 1 [publisher_id] => 1 [developer_1_id] => 1 [developer_2_id] => [developer_3_id] => [developer_4_id] => [market] => Japan [release_date] => 1995-07-21 [uuid] => 67e3eec4a3be37dcfa32ee8d3b2f247e4628076c [info] => Array ( [id] => 1 [title] => Galactic Pinball ) )
                                 foreach ($allGames AS $game) {
                                     ?>
                                     <tr>
                                         <td>
                                             <input type='checkbox' name='<?php echo $rownum ?>' value='<?php echo $game['uuid'] ?>' <?php echo ($game['have'] ? 'checked' : ''); ?> class="has">
                                         </td>
-                                        <td><?php echo $game['game_1_title'] ?></td>
+                                        <td><?php echo anchor("game/{$game['uuid']}",  $game['game_1_title']);?></td>
                                         <td><?php echo $game['market_1'] ?></td>
                                         <?php if (date('d', strtotime($game['game_1_release_date'])) != '1') { ?>
                                             <td><?php echo date('F d, Y', strtotime($game['game_1_release_date'])) ?></td>

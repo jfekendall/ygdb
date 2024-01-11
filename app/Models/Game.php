@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class Game extends Model {
 
     protected $table = 'ygdb_games';
-    
+    protected $primaryKey = 'uuid';
     protected $allowedFields = [
         'uuid',
         'system_id',
