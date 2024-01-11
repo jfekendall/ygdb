@@ -1,22 +1,18 @@
-var getUrl = window.location;
-var baseUrl = getUrl.protocol + "//" + getUrl.host + "/";
+$('#manage-collections-dropdown').addClass('open');
 
-if (getUrl.pathname.split('/')[1] === 'collection') {
-    $('#manage-collections-dropdown').addClass('open');
-}
 
 $('.has').click(function () {
     //Add to collection
     if ($(this).prop('checked')) {
         $.ajax({
             type: "POST",
-            url: baseUrl + "collection/add",
+            url: $("input[name=addAction]").val(),
             data: "li=" + $(this).val()
         });
     } else {
         $.ajax({
             type: "POST",
-            url: baseUrl + "collection/remove",
+            url: $("input[name=remAction]").val(),
             data: "li=" + $(this).val()
         });
     }
@@ -34,7 +30,7 @@ $('.stat').change(function () {
 
     $.ajax({
         type: "POST",
-        url: baseUrl + "statchange",
+        url: $("input[name=statAction]").val(),
         data: "field=" + $(this).attr('name') + "&status=" + status
     }).success(function (data) {
         $('.toast').addClass('alert-success');

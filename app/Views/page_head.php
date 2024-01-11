@@ -1,5 +1,8 @@
 
 <body>
+    <input type="hidden" name="addAction" value="<?php echo site_url('collection/add'); ?>">
+    <input type="hidden" name="remAction" value="<?php echo site_url('collection/remove'); ?>">
+    <input type="hidden" name="statAction" value="<?php echo site_url('statchange'); ?>">
     <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
         <aside id="side-overlay">
             <div id="side-overlay-scroll">
@@ -37,10 +40,12 @@
                                     <span class="sidebar-mini-hide">Manage Collections</span></a>
                                 <ul>
                                     <li>
-                                        <a href="<?php echo base_url(); ?>collection/add"><i class='fa fa-plus'></i> Add New</a>
+                                        <?php echo anchor('collection/add', "<i class='fa fa-plus'></i> Add New"); ?>
                                     </li>
                                     <?php foreach ($yourSystems AS $system) { ?>
-                                        <li><a href="<?php echo base_url(); ?>collection/manage/<?php echo $system['system_name']; ?>"><?php echo $system['system_name']; ?></a></li>
+                                        <li>
+                                            <?php echo anchor("collection/manage/{$system['system_name']}", $system['system_name']); ?>
+                                        </li>
                                     <?php } ?>
                                 </ul>
                             </li>
