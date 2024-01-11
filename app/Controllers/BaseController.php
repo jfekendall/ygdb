@@ -19,8 +19,8 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
-class BaseController extends Controller
-{
+class BaseController extends Controller {
+
     /**
      * Instance of the main Request object.
      *
@@ -28,6 +28,13 @@ class BaseController extends Controller
      */
     protected $request;
 
+    /**
+     * Instance of the main Session object.
+     *
+     * @var \Config\Services::session
+     */
+    protected $session;
+    
     /**
      * An array of helpers to be loaded automatically upon
      * class instantiation. These helpers will be available
@@ -38,15 +45,47 @@ class BaseController extends Controller
     protected $helpers = [];
 
     /**
+     * An array of data to be included with extended controllers
+     *
+     * @var array
+     */
+    protected $data = [];
+    
+    /**
+     * An array of data to be included with extended controllers
+     *
+     * @var array
+     */
+    protected $sideBar = [];
+    
+    /**
+     * UUID of user
+     * TODO: Figure out why Systems and AssembleCollection don't have access
+     * @var string
+     */
+    protected $uid = '';
+    
+    
+    /**
      * Constructor.
      */
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
-    {
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger) {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
+        //Pre-loading common data for all controllers
+        $this->session = \Config\Services::session();
+        if ($this->session->get('isLoggedIn')) {
+            
+            $this->data['username'] = $this->sideBar['username'] = $this->session->get('name');
+            $this->uid = $this->session->get('id');
+            
+            $y = new Systems();
+            $this->sideBar['yourSystems'] = $y->yourSystems();
 
-        // E.g.: $this->session = \Config\Services::session();
+            $u = new User();
+            $this->data['profile'] = $this->sideBar['profile'] = $u->getUserProfile($this->uid);
+        }
     }
+
 }

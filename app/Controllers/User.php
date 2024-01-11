@@ -9,7 +9,7 @@ use App\Models\UserProfile;
  *
  * @author justin
  */
-class User {
+class User extends BaseController{
 
     function getUserProfile($uuid) {
         $p = new UserProfile();

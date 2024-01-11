@@ -6,19 +6,17 @@ use App\Models\Collection;
 use App\Models\Game;
 use App\Models\Market;
 use App\Models\GameSystem;
-use App\Models\Publisher;
-use App\Models\Developer;
 use CodeIgniter\Controller;
 
 class AssembleCollection extends BaseController {
 
-    public function assembleAll($uuid) {
+    public function assembleAll() {
 
         $userCollection = [];
 
         $collection = new Collection();
         $li = new Game();
-        foreach ($collection->getCollectionsByUser($uuid) AS $coll) {
+        foreach ($collection->getCollectionsByUser($this->uid) AS $coll) {
 
             foreach ($li->where('uuid', $coll['game_uuid'])->find() AS $line) {
 
@@ -39,9 +37,6 @@ class AssembleCollection extends BaseController {
     }
 
     public function allGamesOnSystem($system) {
-        helper('anchor');
-        $session = session();
-        $userid = $session->get('id');
         $s = new GameSystem();
         $system = $s->where('system_name', $system)->first();
         $li = new Game();
@@ -67,7 +62,7 @@ class AssembleCollection extends BaseController {
             $ra[$iterator]['market_1'] = implode('<br>', $market);
             $ra[$iterator]['game_1_title'] = implode('<br>', $title);
 
-            if ($collection->hasGame($game['uuid'], $userid)) {
+            if ($collection->hasGame($game['uuid'], session()->get('id'))) {
                 $ra[$iterator]['have'] = true;
             }
             $iterator++;
