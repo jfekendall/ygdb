@@ -6,7 +6,7 @@ use App\Models\UserModel;
 
 class Login extends BaseController {
 
-    public function index() {
+    public function index(): void {
         echo view('template_start');
         echo view('login');
         echo view('template_end');

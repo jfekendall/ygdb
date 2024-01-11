@@ -17,15 +17,11 @@ class Collection extends Model {
         'uuid'
     ];
 
-    public function getCollectionsByUser($user = false) {
-        if ($user === false) {
-            return false;
-        }
-//return $this->findAll();
+    public function getCollectionsByUser($user): array {
         return $this->where(['user_uuid' => $user])->findAll();
     }
 
-    public function amountOfCollections($user) {
+    public function amountOfCollections($user): int {
         $db = \Config\Database::connect();
         $builder = $db->table($this->table);
         $builder->select('system_id');
@@ -36,7 +32,7 @@ class Collection extends Model {
         return $builder->countAll();
     }
 
-    public function hasGame($guuid, $user) {
+    public function hasGame($guuid, $user): int {
         return $this->where('game_uuid', $guuid)->where('user_uuid', $user)->countAllResults();
     }
 

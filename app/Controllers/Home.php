@@ -6,7 +6,7 @@ use App\Models\Collection;
 
 class Home extends BaseController {
 
-    public function index() {
+    public function index(): void {
         if ($this->session->get('isLoggedIn')) {
             $c = new AssembleCollection();
             $this->data['collections'] = $c->assembleAll($this->uid);

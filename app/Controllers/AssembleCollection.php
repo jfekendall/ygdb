@@ -9,7 +9,7 @@ use App\Models\GameSystem;
 
 class AssembleCollection extends BaseController {
 
-    public function assembleAll($uid) {
+    public function assembleAll($uid): array {
 
         $userCollection = [];
 
@@ -35,7 +35,7 @@ class AssembleCollection extends BaseController {
         return $userCollection;
     }
 
-    public function allGamesOnSystem($system) {
+    public function allGamesOnSystem($system): array {
         $s = new GameSystem();
         $system = $s->where('system_name', $system)->first();
         $li = new Game();

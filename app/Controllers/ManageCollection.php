@@ -6,7 +6,7 @@ use App\Models\GameSystem;
 
 class ManageCollection extends BaseController {
 
-    public function index($system) {
+    public function index($system): void {
 
         $c = new AssembleCollection();
         $this->data['allGames'] = $c->allGamesOnSystem($system);

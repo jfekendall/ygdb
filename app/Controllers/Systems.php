@@ -9,7 +9,7 @@ namespace App\Controllers;
  */
 class Systems extends BaseController {
 
-    public function yourSystems() {
+    public function yourSystems(): array {
         $db = \Config\Database::connect();
         $builder = $db->table('ygdb_collections');
         $builder->select('system_name');

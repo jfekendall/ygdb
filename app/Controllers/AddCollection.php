@@ -6,7 +6,7 @@ use App\Models\GameSystem;
 
 class AddCollection extends BaseController {
 
-    public function index() {
+    public function index(): void {
         $s = new GameSystem();
         $systems['sys'] = $s->orderBy('system_name', 'ASC')->findAll();
 
