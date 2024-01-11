@@ -6,8 +6,19 @@ use CodeIgniter\Model;
 
 class Game extends Model {
 
+    /**
+     * @param string $table Base table for this Model
+     */
     protected $table = 'ygdb_games';
+
+    /**
+     * @param string $primaryKey Since this table doesn't use id
+     */
     protected $primaryKey = 'uuid';
+
+    /**
+     * @param array $allowedFields Dictates what fields can be modified
+     */
     protected $allowedFields = [
         'uuid',
         'system_id',

@@ -5,9 +5,22 @@ namespace App\Controllers\API;
 use App\Models\Collection;
 use App\Controllers\BaseController;
 
+/**
+ * Class GameCollectionCRUD
+ * 
+ * CRUD functionality for games to and from a collection
+ * 
+ * @author Justin Kendall
+ */
 class GameCollectionCRUD extends BaseController {
 
-    public function add() {
+    /**
+     * Method Add
+     * 
+     * Adds game to a collection
+     * @return void
+     */
+    public function add(): void {
         $sgli_uuid = $this->request->getVar('li');
 
         $c = new Collection();
@@ -18,13 +31,25 @@ class GameCollectionCRUD extends BaseController {
         $c->save($data);
     }
 
-    public function remove() {
+    /**
+     * Method Remove
+     * 
+     * Removes a game from a collection
+     * @return void
+     */
+    public function remove(): void {
         $c = new Collection();
         $sgli_uuid = $this->request->getVar('li');
         $c->where('game_uuid', $sgli_uuid)->where('user_uuid', $this->uid)->delete();
     }
 
-    public function stats() {
+    /**
+     * Method stats
+     * 
+     * Updates personal stats of a game in a users collection
+     * @return string
+     */
+    public function stats(): string {
         //get the sent stuff
         $field = $this->request->getVar('field');
         $pieces = explode('_', $field);

@@ -9,6 +9,14 @@ namespace App\Controllers;
  */
 class Systems extends BaseController {
 
+    /**
+     * Method yourSystems
+     * 
+     * Getter for all systems belonging to a user collection
+     * 
+     * @author Justin Kendall
+     * @return array
+     */
     public function yourSystems(): array {
         $db = \Config\Database::connect();
         $builder = $db->table('ygdb_collections');

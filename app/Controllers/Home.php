@@ -5,7 +5,12 @@ namespace App\Controllers;
 use App\Models\Collection;
 
 class Home extends BaseController {
-
+    /**
+     * Method index
+     * 
+     * @author Justin Kendall
+     * @return void
+     */
     public function index(): void {
         if ($this->session->get('isLoggedIn')) {
             $c = new AssembleCollection();

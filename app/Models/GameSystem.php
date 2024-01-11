@@ -1,17 +1,33 @@
-<?php 
+<?php
+
 namespace App\Models;
 
 use CodeIgniter\Model;
 
-class GameSystem extends Model{
+/**
+ * Class GameSystem
+ * 
+ * @todo Remove references
+ * @deprecated In favor of System     
+ */
+class GameSystem extends Model {
 
-	protected $table = 'ygdb_systems';
+    /**
+     * @param string $table Base table for this Model
+     */
+    protected $table = 'ygdb_systems';
 
-	public function getSystem($id = false){
-		if ($id === false) {
-			return false;
-    		}
-    		return $this->where(['id' => $id])->first();
-	}
+    /**
+     * Method getSystem
+     * 
+     * @param int id
+     * @return array
+     */
+    public function getSystem(int $id = 0): array {
+        if ($id === 0) {
+            return [];
+        }
+        return $this->where(['id' => $id])->first();
+    }
 
 }

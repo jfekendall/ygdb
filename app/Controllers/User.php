@@ -5,9 +5,12 @@ namespace App\Controllers;
 use App\Models\UserProfile;
 
 /**
- * Description of Systems
- *
- * @author justin
+ * Class User
+ * 
+ * Controller for User Profile functionality
+ * 
+ * @author Justin Kendall
+ * @todo build this out
  */
 class User extends BaseController {
 
