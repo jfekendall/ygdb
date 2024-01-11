@@ -9,7 +9,7 @@ use CodeIgniter\Model;
  *
  * @author justin
  */
-class Market extends Model{
+class Market extends Model {
 
     protected $table = 'market';
     protected $primaryKey = 'id';

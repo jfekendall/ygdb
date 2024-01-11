@@ -6,7 +6,6 @@ use App\Models\Collection;
 use App\Models\Game;
 use App\Models\Market;
 use App\Models\GameSystem;
-use CodeIgniter\Controller;
 
 class AssembleCollection extends BaseController {
 

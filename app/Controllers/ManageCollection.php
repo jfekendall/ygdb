@@ -2,10 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Collection;
-use App\Models\UserProfile;
 use App\Models\GameSystem;
-use CodeIgniter\Controller;
 
 class ManageCollection extends BaseController {
 

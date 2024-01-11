@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\Collection;
-use CodeIgniter\Controller;
 
 class Home extends BaseController {
 
