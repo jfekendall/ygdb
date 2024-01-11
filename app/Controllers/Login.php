@@ -14,8 +14,6 @@ class Login extends BaseController {
     }
 
     public function loginAuth() {
-        $session = session();
-
         $userModel = new UserModel();
 
         $username = $this->request->getVar('login-username');
@@ -33,21 +31,20 @@ class Login extends BaseController {
                     'isLoggedIn' => true
                 ];
 
-                $session->set($ses_data);
+                $this->session->set($ses_data);
                 return redirect()->to('/');
             } else {
-                $session->setFlashdata('msg', 'Well butts. Nothing much going on with what you gave for credentials.');
+                $this->session->setFlashdata('msg', 'Well butts. Nothing much going on with what you gave for credentials.');
                 return redirect()->to('/');
             }
         } else {
-            $session->setFlashdata('msg', 'Well butts. Nothing much going on with what you gave for credentials.');
+            $this->session->setFlashdata('msg', 'Well butts. Nothing much going on with what you gave for credentials.');
             return redirect()->to('/');
         }
     }
     
     public function logoff(){
-        $session = session();
-        $session->destroy();
+        $this->session->destroy();
         return redirect()->to('/');
     }
 

@@ -13,36 +13,19 @@ use App\Models\UserProfile;
 class GameController extends BaseController {
 
     public function index($game) {
-
-        $session = session();
-        $userid = $session->get('id');
-        $data = $sideBar = [];
-
-        $profile = new UserProfile();
-        $data['profile'] = $sideBar['profile'] = $profile->where('ygdb_user_uuid', $userid)->first();
-
-        $data['username'] = $sideBar['username'] = $session->get('name');
-
-        $y = new Systems();
-        $sideBar['yourSystems'] = $y->yourSystems();
-
-        $uid = $session->get('id');
-        $u = new User();
-        $data['profile'] = $sideBar['profile'] = $u->getUserProfile($uid);
-
         $g = new Game();
-        $data['gamedata'] = $g->find($game);
-        $data['gamedata'] = array_merge($data['gamedata'], $this->getThingNames('Developer', $data['gamedata']));
-        $data['gamedata'] = array_merge($data['gamedata'], $this->getThingNames('Publisher', $data['gamedata']));
-        $data['gamedata'] = array_merge($data['gamedata'], $this->getThingNames('Market', $data['gamedata']));
+        $this->data['gamedata'] = $g->find($game);
+        $this->data['gamedata'] = array_merge($this->data['gamedata'], $this->getThingNames('Developer', $this->data['gamedata']));
+        $this->data['gamedata'] = array_merge($this->data['gamedata'], $this->getThingNames('Publisher', $this->data['gamedata']));
+        $this->data['gamedata'] = array_merge($this->data['gamedata'], $this->getThingNames('Market', $this->data['gamedata']));
         
         $collectionData = new Collection();
        
-        $data['personalstats'] = $collectionData->where(['game_uuid' => $data['gamedata']['uuid'], 'user_uuid' => $userid])->first();
+        $this->data['personalstats'] = $collectionData->where(['game_uuid' => $this->data['gamedata']['uuid'], 'user_uuid' => $this->uid])->first();
         
         echo view('template_start');
-        echo view('page_head', $sideBar);
-        echo view('game', $data);
+        echo view('page_head', $this->sideBar);
+        echo view('game', $this->data);
         echo view('page_footer');
         echo view('template_end');
     }

@@ -9,22 +9,19 @@ class GameCollectionCRUD extends BaseController {
 
     public function add() {
         $sgli_uuid = $this->request->getVar('li');
-        $session = session();
-        $userid = $session->get('id');
+
         $c = new Collection();
         $data = [
             'game_uuid' => $sgli_uuid,
-            'user_uuid' => $userid
+            'user_uuid' => $this->uid
         ];
         $c->save($data);
     }
 
     public function remove() {
-        $session = session();
-        $userid = $session->get('id');
         $c = new Collection();
         $sgli_uuid = $this->request->getVar('li');
-        $c->where('game_uuid', $sgli_uuid)->where('user_uuid', $userid)->delete();
+        $c->where('game_uuid', $sgli_uuid)->where('user_uuid', $this->uid)->delete();
     }
 
     public function stats() {
@@ -40,11 +37,9 @@ class GameCollectionCRUD extends BaseController {
         }
         $status = $this->request->getVar('status');
 
-        $session = session();
-        $userid = $session->get('id');
         $c = new Collection();
         $id = $c->where('game_uuid', $game_uuid)
-                        ->where('user_uuid', $userid)->first();
+                        ->where('user_uuid', $this->uid)->first();
 
         if ($c->update($id['id'], [$field_name => $status])) {
             echo 'Success';

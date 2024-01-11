@@ -8,7 +8,7 @@ namespace App\Controllers;
  *
  * @author justin
  */
-class Systems {
+class Systems extends BaseController{
     
     public function yourSystems(){
         $db = \Config\Database::connect();

@@ -36,12 +36,10 @@ class Register extends Controller {
                 'profile_tagline' => "Member since " . date('F Y')
             ];
             $profileModel->save($data);
-            $session = session();
-            $session->setFlashdata('success', 'Welcome aboard! Just log in and see what all this site has to offer!');
+            $this->session->setFlashdata('success', 'Welcome aboard! Just log in and see what all this site has to offer!');
             return redirect()->to('/');
         } else {
-            $session = session();
-            $session->setFlashdata('msg', "Something happened. Don't know where. Don't know what.");
+            $this->session->setFlashdata('msg', "Something happened. Don't know where. Don't know what.");
             $data['validation'] = $this->validator;
             return redirect()->to('/');
         }
