@@ -10,13 +10,13 @@ use CodeIgniter\Controller;
 
 class AssembleCollection extends BaseController {
 
-    public function assembleAll() {
+    public function assembleAll($uid) {
 
         $userCollection = [];
 
         $collection = new Collection();
         $li = new Game();
-        foreach ($collection->getCollectionsByUser($this->uid) AS $coll) {
+        foreach ($collection->getCollectionsByUser($uid) AS $coll) {
 
             foreach ($li->where('uuid', $coll['game_uuid'])->find() AS $line) {
 
