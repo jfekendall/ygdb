@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controllers;
 
 /**
@@ -8,9 +7,9 @@ namespace App\Controllers;
  *
  * @author justin
  */
-class Systems extends BaseController{
-    
-    public function yourSystems(){
+class Systems extends BaseController {
+
+    public function yourSystems() {
         $db = \Config\Database::connect();
         $builder = $db->table('ygdb_collections');
         $builder->select('system_name');
@@ -21,4 +20,5 @@ class Systems extends BaseController{
         $query = $builder->get();
         return $query->getResult('array');
     }
+
 }

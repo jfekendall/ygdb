@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\UserModel;
 
 class Login extends BaseController {
@@ -42,8 +41,8 @@ class Login extends BaseController {
             return redirect()->to('/');
         }
     }
-    
-    public function logoff(){
+
+    public function logoff() {
         $this->session->destroy();
         return redirect()->to('/');
     }

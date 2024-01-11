@@ -8,6 +8,7 @@ class Developer extends Model{
         protected $nameColumn = 'developer_name';
         protected $allowedFields = ['developer_name'];
         
+        //TODO: figure out what the hell this is
 	public function getDevelopers($dev1 = false, $dev2 = false, $dev3 = false, $dev4 = false){
 
 		if (!$dev1 && !$dev2 && !$dev3 && !$dev4) {

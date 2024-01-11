@@ -2,13 +2,11 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\Game;
 use App\Models\Developer;
 use App\Models\Publisher;
 use App\Models\Market;
 use App\Models\Collection;
-use App\Models\UserProfile;
 
 class GameController extends BaseController {
 
