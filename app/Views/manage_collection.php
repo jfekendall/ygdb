@@ -1,4 +1,3 @@
-<?php helper('anchor');?>
 <main id="main-container">
     <div class="content bg-image" style="background: url('<?php echo base_url() . $system_info['system_banner'] ?>') #a0a0a0; background-size: cover;background-position: center;">
         <div class="push-50-t push-15 clearfix">
@@ -37,7 +36,6 @@
                             <tbody>
                                 <?php
                                 $rownum = 1;
-                                //Array ( [id] => 1 [game_id] => 1 [system_id] => 1 [publisher_id] => 1 [developer_1_id] => 1 [developer_2_id] => [developer_3_id] => [developer_4_id] => [market] => Japan [release_date] => 1995-07-21 [uuid] => 67e3eec4a3be37dcfa32ee8d3b2f247e4628076c [info] => Array ( [id] => 1 [title] => Galactic Pinball ) )
                                 foreach ($allGames AS $game) {
                                     ?>
                                     <tr>

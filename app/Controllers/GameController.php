@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\Developer;
 use App\Models\Publisher;
 use App\Models\Market;
+use App\Models\Collection;
 use App\Models\UserProfile;
 
 class GameController extends BaseController {
@@ -34,6 +35,11 @@ class GameController extends BaseController {
         $data['gamedata'] = array_merge($data['gamedata'], $this->getThingNames('Developer', $data['gamedata']));
         $data['gamedata'] = array_merge($data['gamedata'], $this->getThingNames('Publisher', $data['gamedata']));
         $data['gamedata'] = array_merge($data['gamedata'], $this->getThingNames('Market', $data['gamedata']));
+        
+        $collectionData = new Collection();
+       
+        $data['personalstats'] = $collectionData->where(['game_uuid' => $data['gamedata']['uuid'], 'user_uuid' => $userid])->first();
+        
         echo view('template_start');
         echo view('page_head', $sideBar);
         echo view('game', $data);

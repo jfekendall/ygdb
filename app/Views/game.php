@@ -55,16 +55,26 @@
                                         echo "<br>";
                                     }
                                     ?>
-                            <tr>
-                                <th>
-                                    Release Date in <?php echo $gamedata["game_market_name_$i"]; ?>
-                                </th>
-                                <td>
-                                    <?php echo date("F d, Y", strtotime($gamedata["game_{$i}_release_date"]));?>
-                                </td>
-                            </tr>
+                                    <tr>
+                                        <th>
+                                            Release Date in <?php echo $gamedata["game_market_name_$i"]; ?>
+                                        </th>
+                                        <td>
+                                            <?php echo date("F d, Y", strtotime($gamedata["game_{$i}_release_date"])); ?>
+                                        </td>
+                                    </tr>
                                     <?php
                                 }
+                            }
+                            if (!empty($gamedata['game_box_text'])) {
+                                ?>
+                                <tr>
+                                    <th colspan="2">From the Box</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $gamedata['game_box_text']; ?></td>
+                                </tr>
+                                <?php
                             }
                             ?>
                         </table>
@@ -74,18 +84,53 @@
             <div class="col-sm-6 ">
                 <div class="block">
                     <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
-                            </li>
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
-                            </li>
-                        </ul>
                         <h3 class="block-title"><i class="fa fa-user"></i> Your Stats</h3>
                     </div>
                     <div class="block-content">
-TODO: This
+                        <?php
+                        if (empty($personalstats)) {
+                            //add to collection to get started
+                            ?>
+                            <p><input type='checkbox' name='claim' value='<?php echo $gamedata['uuid'] ?>' class="has">
+                                Add to your collection for personal stats</p>
+                            <?php
+                        } else {
+                            ?>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Status</th>
+                                    <td>
+                                        <?php
+                                        $rownum = 1;
+                                        $statuses = [
+                                            '' => '',
+                                            'N' => 'New',
+                                            'B' => 'Beaten',
+                                            'C' => 'Completed',
+                                            'M' => 'Mastered',
+                                        ];
+                                        echo "<select name='{$gamedata['uuid']}_status' class='stat'>";
+                                        foreach ($statuses AS $k => $v) {
+                                            echo "<option value='$k' " . ($personalstats['status'] == $k ? 'selected' : '') . ">$v</option>";
+                                        }
+                                        echo "</select>";
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php
+                                foreach ($personalstats AS $k => $v) {
+                                    if (!in_array($k, ['with_case', 'in_wrap', 'with_manual'])) {
+                                        continue;
+                                    }
+                                    echo "<tr>"
+                                    . "<th>" . ucwords(str_replace('_', ' ', $k)) . "</th>"
+                                    . "<td><input type='checkbox' class='stat' name='{$gamedata['uuid']}_$k' " . ($v ? 'checked' : '') . "></td>"
+                                    . "</tr>";
+                                }
+                                ?>
+
+                            </table>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
