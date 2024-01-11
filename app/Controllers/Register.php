@@ -2,12 +2,11 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\UserModel;
 use App\Models\UserProfile;
 use Ramsey\Uuid\Uuid;
 
-class Register extends Controller {
+class Register extends BaseController {
 
     public function store() {
         helper(['form']);
