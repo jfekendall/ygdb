@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\GameSystem;
+use App\Models\System;
 
 class ManageCollection extends BaseController {
 /**
@@ -18,7 +18,7 @@ class ManageCollection extends BaseController {
 
         $this->data['system'] = $system;
 
-        $s = new GameSystem();
+        $s = new System();
         $this->data['system_info'] = $s->where('system_name', $system)->first();
 
         echo view('template_start');
