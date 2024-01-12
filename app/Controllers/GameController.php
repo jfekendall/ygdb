@@ -62,9 +62,8 @@ class GameController extends BaseController {
         }
         for ($i = 1; $i <= $limit; $i++) {
             if (!is_null($game["game_{$i}_$lcthing"])) {
-                $dev = ${$thing};
-                $d = $dev->find($game["game_{$i}_$lcthing"]);
-                $ra["game_{$lcthing}_name_$i"] = $d["{$lcthing}_name"];
+                $dev = ${$thing}->translateToEnglish($game["game_{$i}_$lcthing"]);
+                $ra["game_{$lcthing}_name_$i"] = $dev;
             }
         }
         return $ra;

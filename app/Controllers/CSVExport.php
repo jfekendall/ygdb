@@ -160,6 +160,7 @@ class CSVExport extends BaseController {
      * @param array game
      * @return void
      * @todo find a less hacky way of instantiating things
+     * @todo use translateToEnglish on Models
      */
     protected function getThingNames(string $thing, array &$game): void {
         $ra = [];

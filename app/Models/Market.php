@@ -9,7 +9,7 @@ use CodeIgniter\Model;
  *
  * @author justin
  */
-class Market extends Model {
+class Market extends BaseModel {
     /**
      * @param string $table Base table for this Model
      */
