@@ -86,5 +86,35 @@ class AssembleCollection extends BaseController {
         }
         return $ra;
     }
+    
+        /**
+     * Method getWholeCollection
+     * 
+     * Returns all systems with games belonging to a user
+     * 
+     * @author Justin Kendall
+     * @param string uid
+     * @return array
+     */
+    public function getWholeCollection(string $uid): array {
+        $ra = [];
+        $systems = [];
+        $collection = new Collection();
+        $system = new System();
+        foreach($collection->where(['user_uuid' => $uid])->findAll() AS $c){
+            $game = new Game();
+            $g =  $game->find($c['game_uuid']);
+            
+            $systems[$g['system_id']] = $system->translateToEnglish($g['system_id']);
+        }
+        
+        foreach($systems AS $s){
+            $ra = array_merge($ra, $this->allGamesOnSystem($s));
+        }
+        
+        return $ra;
+        
+    }
+    
 
 }

@@ -11,17 +11,18 @@
     </div>
     <div class="content bg-white border-b">
         <div class="row items-push text-uppercase">
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-3 text-center">
                 <div class="font-w700 text-gray-darker animated fadeIn">Systems</div>
                 <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo sizeof($yourSystems); ?></a>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-3 text-center">
                 <div class="font-w700 text-gray-darker animated fadeIn">Games</div>
                 <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo $howmany; ?></a>
             </div>
-            <div class="col-xs-6 col-sm-3">
-                <!-- <div class="font-w700 text-gray-darker animated fadeIn">Avg Completeness</div>
-                 <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">100%</a> -->
+            <div class="col-xs-6 col-sm-3 text-center">
+                <div class="font-w700 text-gray-darker animated fadeIn">Export</div>
+                <?php echo anchor("csvexport", "<i class='fa fa-cloud-download'></i>", "class='h2 font-w300 text-primary animated flipInX'"); ?>
+
             </div>
         </div>
     </div>
@@ -48,9 +49,8 @@
                                 ?>
                                 <h2>
                                     <?php echo $collection; ?> 
-                                    <a href='<?php echo base_url(); ?>/collection/manage/<?php echo $collection; ?>' title='Manage Collection'>
-                                        <i class='fa fa-edit pull-right'></i>
-                                    </a>
+                                    <?php echo anchor("csvexport/$collection", "<i class='fa fa-cloud-download pull-right'></i>", "title='Download system collection to CSV'"); ?>
+                                    <?php echo anchor("collection/manage/$collection", "<i class='fa fa-edit pull-right'></i>", "title='Manage Collection'"); ?>
                                 </h2>
                                 <table class='table table-striped js-dataTable-full'>
                                     <thead>
@@ -75,10 +75,10 @@
                                         ];
                                         foreach (array_keys($collections[$collection]) AS $gamename) {
                                             echo "<tr>
-								<td>$rownum</td>
-								<td>" . anchor("game/{$collections[$collection][$gamename]['uuid']}", $gamename) . "</td>
-                                                                <td class='text-center'>
-                                                                    <select name='{$collections[$collection][$gamename]['uuid']}_status' class='stat'>";
+                                                <td>$rownum</td>
+                                                <td>" . anchor("game/{$collections[$collection][$gamename]['uuid']}", $gamename) . "</td>
+                                                <td class='text-center'>
+                                                    <select name='{$collections[$collection][$gamename]['uuid']}_status' class='stat'>";
                                             foreach ($statuses AS $k => $v) {
                                                 echo "<option value='$k' " . ($collections[$collection][$gamename]['status'] == $k ? 'selected' : '') . ">$v</option>";
                                             }

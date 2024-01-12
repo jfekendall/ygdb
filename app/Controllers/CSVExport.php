@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Developer;
 use App\Models\Publisher;
 use App\Models\Market;
+use App\Models\System;
 use League\Csv\Writer;
 
 /**
@@ -42,7 +43,6 @@ class CSVExport extends BaseController {
         'game_box_art' => '',
         'game_box_text' => ''
     ];
-    
     protected $systemFields = [
         'Have',
         'Title 1',
@@ -63,7 +63,6 @@ class CSVExport extends BaseController {
         'Release Date 2',
         'Release Date 3',
         'Release Date 4'];
-    
     protected $collectionFields = [
         'Have',
         'System',
@@ -99,11 +98,10 @@ class CSVExport extends BaseController {
         if (!empty($system)) {
             //Export for one system   
             //put the header in 
-            $csv->insertOne($$this->systemFields);
-
+            $csv->insertOne($this->systemFields);
             $systemName = str_replace(' ', '_', $system);
-            //$csv->output("{$this->data['username']}-{$systemName}.csv");
-            //die;
+            $fileName = "{$this->data['username']}-{$systemName}.csv";
+
             $systemCollection = new AssembleCollection();
             $collection = $systemCollection->allGamesOnSystem($system);
             foreach ($collection AS $c) {
@@ -122,8 +120,33 @@ class CSVExport extends BaseController {
             }
         } else {
             //Dump the whole collection
+            $s = new System();
+            //put the header in 
+            $csv->insertOne($this->systemFields);
+            $fileName = "{$this->data['username']}-Collection.csv";
+
+            $systemCollection = new AssembleCollection();
+            $collection = $systemCollection->getWholeCollection($this->uid);
+            foreach ($collection AS $c) {
+                
+                $record = [];
+                $this->getThingNames('Developer', $c);
+                $this->getThingNames('Publisher', $c);
+                $this->getThingNames('Market', $c);
+
+                $c['system_id'] = $s->translateToEnglish($c['system_id']);
+
+                foreach ($this->map as $k => $m) {
+                    if (empty($m)) {
+                        unset($c[$k]);
+                    } else {
+                        $record[$m] = $c[$k];
+                    }
+                }
+                $csv->insertOne($record);
+            }
         }
-        $csv->output("{$this->data['username']}-{$systemName}.csv");
+        $csv->output($fileName);
         die();
     }
 
