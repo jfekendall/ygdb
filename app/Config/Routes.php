@@ -31,13 +31,13 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index',['filter' => 'authGuard']);
+$routes->get('/', 'Home::index', ['filter' => 'authGuard']);
 $routes->post('login', 'Login::index');
 $routes->get('logoff', 'Login::logoff');
 $routes->post('register', 'Register::store');
-$routes->get('collection/add', 'AddCollection::index');
-$routes->get('collection/manage/(:any)', 'ManageCollection::index/$1',['filter' => 'authGuard']);
-$routes->get('game/(:any)', 'GameController::index/$1');
+$routes->get('collection/add', 'AddCollection::index', ['filter' => 'authGuard']);
+$routes->get('collection/manage/(:any)', 'ManageCollection::index/$1', ['filter' => 'authGuard']);
+$routes->get('game/(:any)', 'GameController::index/$1', ['filter' => 'authGuard']);
 
 //Colleciton Management API
 $routes->post('collection/add', 'API\\GameCollectionCRUD::add');
