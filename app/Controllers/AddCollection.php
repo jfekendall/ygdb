@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\GameSystem;
+use App\Models\System;
 
 class AddCollection extends BaseController {
 
@@ -12,7 +12,7 @@ class AddCollection extends BaseController {
      * @return void
      */
     public function index(): void {
-        $s = new GameSystem();
+        $s = new System();
         $systems['sys'] = $s->orderBy('system_name', 'ASC')->findAll();
 
         echo view('template_start');

@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\Collection;
 use App\Models\Game;
 use App\Models\Market;
-use App\Models\GameSystem;
+use App\Models\System;
 
 class AssembleCollection extends BaseController {
 
@@ -28,7 +28,7 @@ class AssembleCollection extends BaseController {
 
             foreach ($li->where('uuid', $coll['game_uuid'])->find() AS $line) {
 
-                $s = new GameSystem();
+                $s = new System();
                 $system = $s->find($line['system_id']);
                 $game = $line;
                 $userCollection[$system['system_name']][$game['game_1_title']]['uuid'] = $game['uuid'];
@@ -54,7 +54,7 @@ class AssembleCollection extends BaseController {
      * @return array
      */
     public function allGamesOnSystem($system): array {
-        $s = new GameSystem();
+        $s = new System();
         $system = $s->where('system_name', $system)->first();
         $li = new Game();
         $ra = [];
