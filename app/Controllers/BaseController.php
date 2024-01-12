@@ -34,7 +34,7 @@ class BaseController extends Controller {
      * @var \Config\Services::session
      */
     protected $session;
-    
+
     /**
      * An array of helpers to be loaded automatically upon
      * class instantiation. These helpers will be available
@@ -50,22 +50,21 @@ class BaseController extends Controller {
      * @var array
      */
     protected $data = [];
-    
+
     /**
      * An array of data to be included with extended controllers
      *
      * @var array
      */
     protected $sideBar = [];
-    
+
     /**
      * UUID of user
      * TODO: Figure out why Systems and AssembleCollection don't have access
      * @var string
      */
     protected $uid = '';
-    
-    
+
     /**
      * Constructor.
      */
@@ -76,15 +75,17 @@ class BaseController extends Controller {
         //Pre-loading common data for all controllers
         $this->session = \Config\Services::session();
         if ($this->session->get('isLoggedIn')) {
-            
+
             $this->data['username'] = $this->sideBar['username'] = $this->session->get('name');
             $this->uid = $this->session->get('id');
-            
+
             $y = new Systems();
             $this->sideBar['yourSystems'] = $y->yourSystems();
 
             $u = new User();
             $this->data['profile'] = $this->sideBar['profile'] = $u->getUserProfile($this->uid);
+        } else {
+            $this->data['profile'] = $this->sideBar['profile'] = [];
         }
     }
 
