@@ -38,6 +38,7 @@ class Game extends Model {
         'game_genre',
         'game_1_release_date',
         'game_2_release_date',
-        'game_3_release_date'];
+        'game_3_release_date',
+        'game_box_text'];
 
 }

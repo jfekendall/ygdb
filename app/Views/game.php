@@ -54,9 +54,10 @@
                                     ?>
                                     <tr>
                                         <th>
-                                             <?php 
-                                             echo lang('VitalStats.release_date');
-                                             echo $gamedata["game_market_name_$i"]; ?>
+                                            <?php
+                                            echo lang('VitalStats.release_date');
+                                            echo $gamedata["game_market_name_$i"];
+                                            ?>
                                         </th>
                                         <td>
                                             <?php echo date("F d, Y", strtotime($gamedata["game_{$i}_release_date"])); ?>
@@ -75,6 +76,18 @@
                                 </tr>
                                 <?php
                             }
+                            if (session()->isAdmin) {
+                                ?><tr>
+                                    <th colspan="2"><?php echo lang('VitalStats.box_text'); ?></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="hidden" name="adminAction" value="<?php echo site_url('boxtext'); ?>">
+                                        <input type="hidden" name="game_uuid" value="<?php echo $gamedata['uuid']?>">
+                                    <?php
+                                echo "<textarea class='form-control' name='game_box_text'>{$gamedata['game_box_text']}</textarea></td></tr>";
+                            }
+                            
                             ?>
                         </table>
                     </div>
@@ -91,7 +104,7 @@
                             //add to collection to get started
                             ?>
                             <p><input type='checkbox' name='claim' value='<?php echo $gamedata['uuid'] ?>' class="has">
-                                <?php echo lang('VitalStats.add_to_collection'); ?></p>
+                            <?php echo lang('VitalStats.add_to_collection'); ?></p>
                             <?php
                         } else {
                             ?>
@@ -103,18 +116,18 @@
                                         $rownum = 1;
                                         echo "<select name='{$gamedata['uuid']}_status' class='stat'>";
                                         foreach ($statuses AS $v) {
-                                                echo "<option "
-                                                . "value='{$v['id']}' "
-                                                . ($personalstats['status'] == $v['id'] ? 'selected' : '') . ""
-                                                . ">" . lang("GameStatus.{$v['status_name']}") . "</option>";
-                                            }
+                                            echo "<option "
+                                            . "value='{$v['id']}' "
+                                            . ($personalstats['status'] == $v['id'] ? 'selected' : '') . ""
+                                            . ">" . lang("GameStatus.{$v['status_name']}") . "</option>";
+                                        }
                                         echo "</select>";
                                         ?>
                                     </td>
                                 </tr>
                                 <?php
                                 foreach ($personalstats AS $k => $v) {
-                                    if (!in_array($k, ['physical_media','with_case', 'in_wrap', 'with_manual'])) {
+                                    if (!in_array($k, ['physical_media', 'with_case', 'in_wrap', 'with_manual'])) {
                                         continue;
                                     }
                                     echo "<tr>"
@@ -125,7 +138,7 @@
                                 ?>
 
                             </table>
-                        <?php } ?>
+<?php } ?>
                     </div>
                 </div>
             </div>
