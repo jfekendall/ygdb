@@ -114,7 +114,7 @@
                                 </tr>
                                 <?php
                                 foreach ($personalstats AS $k => $v) {
-                                    if (!in_array($k, ['with_case', 'in_wrap', 'with_manual'])) {
+                                    if (!in_array($k, ['physical_media','with_case', 'in_wrap', 'with_manual'])) {
                                         continue;
                                     }
                                     echo "<tr>"

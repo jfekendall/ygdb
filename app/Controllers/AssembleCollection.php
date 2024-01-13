@@ -34,6 +34,7 @@ class AssembleCollection extends BaseController {
                 $userCollection[$system['system_name']][$game['game_1_title']]['uuid'] = $game['uuid'];
                 $userCollection[$system['system_name']][$game['game_1_title']]['status'] = $coll['status'];
                 $userCollection[$system['system_name']][$game['game_1_title']]['stats'] = [
+                    'physical_media' => $coll['physical_media'],
                     'with_case' => $coll['with_case'],
                     'in_wrap' => $coll['in_wrap'],
                     'with_manual' => $coll['with_manual']

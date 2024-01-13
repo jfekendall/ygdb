@@ -17,6 +17,7 @@ class Collection extends Model {
         'game_uuid',
         'user_uuid',
         'status',
+        'physical_media',
         'with_case',
         'in_wrap',
         'with_manual',
