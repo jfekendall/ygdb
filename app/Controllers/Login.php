@@ -32,7 +32,8 @@ class Login extends BaseController {
                 $ses_data = [
                     'id' => $data['user_uuid'],
                     'name' => $data['ygdb_username'],
-                    'isLoggedIn' => true
+                    'isLoggedIn' => true,
+                    'isAdmin' => (bool) $data['is_admin']
                 ];
                 $this->session->set($ses_data);
                 return redirect()->to('/');

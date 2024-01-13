@@ -45,6 +45,9 @@ $routes->get('csvexport/(:any)', 'CSVExport::index/$1', ['filter' => 'authGuard'
 $routes->post('collection/add', 'API\\GameCollectionCRUD::add');
 $routes->post('collection/remove', 'API\\GameCollectionCRUD::remove');
 $routes->post('statchange', 'API\\GameCollectionCRUD::stats');
+
+//AdminStuff
+$routes->post('boxtext', 'API\\AdminFunctionality::boxtext', ['filter' => 'authGuard']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
