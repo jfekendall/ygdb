@@ -51,9 +51,6 @@
                             <?php
                             for ($i = 1; $i <= 4; $i++) {
                                 if (isset($gamedata["game_market_name_$i"])) {
-                                    if ($i > 1) {
-                                        echo "<br>";
-                                    }
                                     ?>
                                     <tr>
                                         <th>
