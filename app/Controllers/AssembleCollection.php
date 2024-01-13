@@ -62,21 +62,11 @@ class AssembleCollection extends BaseController {
         $iterator = 0;
         foreach ($li->where('system_id', $system['id'])->orderBy('game_1_title')->findAll() AS $game) {
             $ra[$iterator] = $game;
-            $m = new Market();
+
             $collection = new Collection();
             $ra[$iterator]['have'] = false;
-            $market = $title = [];
-            for ($i = 1; $i <= 3; $i++) {
-                if ($game["game_{$i}_market"]) {
-                    $mark = $m->find($game["game_{$i}_market"]);
-                    $market[] = $mark['market_name'];
-                }
-                if ($game["game_{$i}_title"]) {
-                    if (!in_array($game["game_{$i}_title"], $title)) {
-                        $title[] = $game["game_{$i}_title"];
-                    }
-                }
-            }
+            $market = $this->getMarkets($game);
+            $title = $this->getTitles($game);
             $ra[$iterator]['market_1'] = implode('<br>', $market);
             $ra[$iterator]['game_1_title'] = implode('<br>', $title);
 
@@ -87,8 +77,49 @@ class AssembleCollection extends BaseController {
         }
         return $ra;
     }
-    
-        /**
+
+    /**
+     * Method getTitles
+     * 
+     * Getter for all titles for a game
+     * 
+     * @author Justin Kendall
+     * @param array game
+     * @return array
+     */
+    protected function getTitles($game): array {
+        $numberOfColumns = 3;
+        $title = [];
+        for ($i = 1; $i <= $numberOfColumns; $i++) {
+            if ($game["game_{$i}_title"]) {
+                $title[] = $game["game_{$i}_title"];
+            }
+        }
+        return $title;
+    }
+
+    /**
+     * Method getMarkets
+     * 
+     * Getter for all markets for a game
+     * 
+     * @author Justin Kendall
+     * @param array game
+     * @return array
+     */
+    protected function getMarkets($game): array {
+        $numberOfColumns = 4;
+        $m = new Market();
+        $market = [];
+        for ($i = 1; $i <= $numberOfColumns; $i++) {
+            if ($game["game_{$i}_market"]) {
+                $market[] = $m->translateToEnglish($game["game_{$i}_market"]);
+            }
+        }
+        return $market;
+    }
+
+    /**
      * Method getWholeCollection
      * 
      * Returns all systems with games belonging to a user
@@ -102,20 +133,18 @@ class AssembleCollection extends BaseController {
         $systems = [];
         $collection = new Collection();
         $system = new System();
-        foreach($collection->where(['user_uuid' => $uid])->findAll() AS $c){
+        foreach ($collection->where(['user_uuid' => $uid])->findAll() AS $c) {
             $game = new Game();
-            $g =  $game->find($c['game_uuid']);
-            
+            $g = $game->find($c['game_uuid']);
+
             $systems[$g['system_id']] = $system->translateToEnglish($g['system_id']);
         }
-        
-        foreach($systems AS $s){
+
+        foreach ($systems AS $s) {
             $ra = array_merge($ra, $this->allGamesOnSystem($s));
         }
-        
+
         return $ra;
-        
     }
-    
 
 }
