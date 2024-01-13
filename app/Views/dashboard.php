@@ -66,24 +66,21 @@
                                     <tbody>
                                         <?php
                                         $rownum = 1;
-                                        $statuses = [
-                                            '' => '',
-                                            'N' => 'New',
-                                            'B' => 'Beaten',
-                                            'C' => 'Completed',
-                                            'M' => 'Mastered',
-                                        ];
+
                                         foreach (array_keys($collections[$collection]) AS $gamename) {
                                             echo "<tr>
                                                 <td>$rownum</td>
                                                 <td>" . anchor("game/{$collections[$collection][$gamename]['uuid']}", $gamename) . "</td>
                                                 <td class='text-center'>
                                                     <select name='{$collections[$collection][$gamename]['uuid']}_status' class='stat'>";
-                                            foreach ($statuses AS $k => $v) {
-                                                echo "<option value='$k' " . ($collections[$collection][$gamename]['status'] == $k ? 'selected' : '') . ">$v</option>";
+                                            foreach ($statuses AS $v) {
+                                                echo "<option "
+                                                . "value='{$v['id']}' "
+                                                . ($collections[$collection][$gamename]['status'] == $v['id'] ? 'selected' : '') . ""
+                                                . ">" . lang("GameStatus.{$v['status_name']}") . "</option>";
                                             }
                                             echo "</select>
-                                                                </td>";
+                                                </td>";
 
                                             foreach ($collections[$collection][$gamename]['stats'] AS $name => $stat) {
 

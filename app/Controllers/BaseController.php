@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\Status;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -87,6 +88,8 @@ class BaseController extends Controller {
         } else {
             $this->data['profile'] = $this->sideBar['profile'] = [];
         }
+        $statuses = new Status();
+        $this->data['statuses'] = $statuses->orderBy('id')->findAll();
     }
 
 }

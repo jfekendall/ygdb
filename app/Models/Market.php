@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use CodeIgniter\Model;
 
 /**
  * Description of Market

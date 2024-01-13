@@ -8,6 +8,13 @@ $('.has').click(function () {
             type: "POST",
             url: $("input[name=addAction]").val(),
             data: "li=" + $(this).val()
+        }).success(function (data) {
+            $('.toast').addClass('alert-success');
+            $('.toast').html('<i class="si si-check fa-2x"></i><br>' + data);
+            $('.toast').slideDown();
+            setTimeout(function () {
+                $('.toast').fadeOut('slow');
+            }, 3000);
         });
     } else {
         $.ajax({
@@ -34,11 +41,11 @@ $('.stat').change(function () {
         data: "field=" + $(this).attr('name') + "&status=" + status
     }).success(function (data) {
         $('.toast').addClass('alert-success');
-        $('.toast').html('<i class="si si-check fa-2x"></i><br>Saved!');
+        $('.toast').html('<i class="si si-check fa-2x"></i><br>' + data);
         $('.toast').slideDown();
         setTimeout(function () {
             $('.toast').fadeOut('slow');
-        }, 2000);
+        }, 3000);
     });
 });
 

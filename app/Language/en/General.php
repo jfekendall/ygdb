@@ -9,5 +9,7 @@ return [
     'add_new' => 'Add New Collection',
     'logoff' => 'Log Out',
     'pick_system' => 'Pick a System',
-    'systems_available' => 'Systems Available'
+    'systems_available' => 'Systems Available',
+    'game_added' => 'Game was added to your collection.',
+    'game_removed' => 'Game was removed to your collection.',
 ];
