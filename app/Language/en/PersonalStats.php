@@ -3,6 +3,7 @@
 return [
     'personal_stats' => 'Your Stats',
     'status' => 'Play Status',
+    'physical_media' => 'Physical Media',
     'with_case' => 'Case/Box',
     'in_wrap' => 'In Wrap',
     'with_manual' => 'Manual',

@@ -58,6 +58,7 @@
                                             <th>#</th>
                                             <th><?php echo lang('General.title'); ?></th>
                                             <th class='text-center'><?php echo lang('PersonalStats.status'); ?></th>
+                                            <th class='text-center'><?php echo lang('PersonalStats.physical_media'); ?></th>
                                             <th class='text-center'><?php echo lang('PersonalStats.with_case'); ?></th>
                                             <th class='text-center'><?php echo lang('PersonalStats.in_wrap'); ?></th>
                                             <th class='text-center'><?php echo lang('PersonalStats.with_manual'); ?></th>
