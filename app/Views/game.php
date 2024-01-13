@@ -101,17 +101,13 @@
                                     <td>
                                         <?php
                                         $rownum = 1;
-                                        $statuses = [
-                                            '' => '',
-                                            'N' => 'New',
-                                            'B' => 'Beaten',
-                                            'C' => 'Completed',
-                                            'M' => 'Mastered',
-                                        ];
                                         echo "<select name='{$gamedata['uuid']}_status' class='stat'>";
-                                        foreach ($statuses AS $k => $v) {
-                                            echo "<option value='$k' " . ($personalstats['status'] == $k ? 'selected' : '') . ">$v</option>";
-                                        }
+                                        foreach ($statuses AS $v) {
+                                                echo "<option "
+                                                . "value='{$v['id']}' "
+                                                . ($personalstats['status'] == $v['id'] ? 'selected' : '') . ""
+                                                . ">" . lang("GameStatus.{$v['status_name']}") . "</option>";
+                                            }
                                         echo "</select>";
                                         ?>
                                     </td>

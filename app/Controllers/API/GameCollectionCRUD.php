@@ -29,6 +29,7 @@ class GameCollectionCRUD extends BaseController {
             'user_uuid' => $this->uid
         ];
         $c->save($data);
+        echo lang("General.game_added");
     }
 
     /**
@@ -41,15 +42,16 @@ class GameCollectionCRUD extends BaseController {
         $c = new Collection();
         $sgli_uuid = $this->request->getVar('li');
         $c->where('game_uuid', $sgli_uuid)->where('user_uuid', $this->uid)->delete();
+        echo lang("General.game_removed");
     }
 
     /**
      * Method stats
      * 
      * Updates personal stats of a game in a users collection
-     * @return string
+     * @return void
      */
-    public function stats(): string {
+    public function stats(): void {
         //get the sent stuff
         $field = $this->request->getVar('field');
         $pieces = explode('_', $field);
@@ -67,9 +69,9 @@ class GameCollectionCRUD extends BaseController {
                         ->where('user_uuid', $this->uid)->first();
 
         if ($c->update($id['id'], [$field_name => $status])) {
-            echo 'Success';
+            echo lang('PersonalStats.save_success');
         } else {
-            echo 'Bummer';
+            echo lang('PersonalStats.save_fail');
         }
     }
 

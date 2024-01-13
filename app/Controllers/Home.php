@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Models\Status;
 use App\Models\Collection;
 
 class Home extends BaseController {
@@ -20,7 +20,7 @@ class Home extends BaseController {
         $col = new Collection();
         $howmany = $col->amountOfCollections($this->uid);
         $this->data['howmany'] = $howmany;
-
+        
         echo view('template_start');
         echo view('page_head', $this->sideBar);
         echo view('dashboard', $this->data);
