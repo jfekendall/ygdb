@@ -12,15 +12,15 @@
     <div class="content bg-white border-b">
         <div class="row items-push text-uppercase">
             <div class="col-xs-6 col-sm-3 text-center">
-                <div class="font-w700 text-gray-darker animated fadeIn">Systems</div>
+                <div class="font-w700 text-gray-darker animated fadeIn"><?php echo lang('Dashboard.systems'); ?></div>
                 <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo sizeof($yourSystems); ?></a>
             </div>
             <div class="col-xs-6 col-sm-3 text-center">
-                <div class="font-w700 text-gray-darker animated fadeIn">Games</div>
+                <div class="font-w700 text-gray-darker animated fadeIn"><?php echo lang('Dashboard.games'); ?></div>
                 <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><?php echo $howmany; ?></a>
             </div>
             <div class="col-xs-6 col-sm-3 text-center">
-                <div class="font-w700 text-gray-darker animated fadeIn">Export</div>
+                <div class="font-w700 text-gray-darker animated fadeIn"><?php echo lang('Dashboard.export'); ?></div>
                 <?php echo anchor("csvexport", "<i class='fa fa-cloud-download'></i>", "class='h2 font-w300 text-primary animated flipInX'"); ?>
 
             </div>
@@ -40,7 +40,7 @@
                                 <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
                             </li>
                         </ul>
-                        <h3 class="block-title"><i class="si si-game-controller"></i> Your Collection</h3>
+                        <h3 class="block-title"><i class="si si-game-controller"></i> <?php echo lang('Dashboard.your_collection'); ?></h3>
                     </div>
                     <div class="block-content">
                         <?php
@@ -56,11 +56,11 @@
                                     <thead>
                                         <tr>	
                                             <th>#</th>
-                                            <th>Title</th>
-                                            <th class='text-center'>Status</th>
-                                            <th class='text-center'>Case?</th>
-                                            <th class='text-center'>In Wrap?</th>
-                                            <th class='text-center'>With Manual?</th>
+                                            <th><?php echo lang('General.title'); ?></th>
+                                            <th class='text-center'><?php echo lang('PersonalStats.status'); ?></th>
+                                            <th class='text-center'><?php echo lang('PersonalStats.with_case'); ?></th>
+                                            <th class='text-center'><?php echo lang('PersonalStats.in_wrap'); ?></th>
+                                            <th class='text-center'><?php echo lang('PersonalStats.with_manual'); ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>

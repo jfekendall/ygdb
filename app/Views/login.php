@@ -21,7 +21,7 @@
                 <div class="push-30-t push-20 animated fadeIn">
                     <div class="text-center">
                         <span class="h4 font-w600"><span class="text-primary">Y</span><span class="sidebar-mini-hide">GDB</span></span>
-                        <p class="text-muted push-15-t">There's a collector in all of us</p>
+                        <p class="text-muted push-15-t"><?php echo lang('General.site_tagline'); ?></p>
                     </div>
                 </div>
             </div>
@@ -31,14 +31,14 @@
                 <div class="col-sm-6 col-lg-4 col-lg-offset-2">
                     <div class="push-30-t push-50 animated fadeIn">
                         <div class="text-center">
-                            <span class="h4 font-w600">Log In</span>
+                            <span class="h4 font-w600"><?php echo lang('Security.login'); ?></span>
                         </div>
                         <form class="js-validation-login form-horizontal push-30-t" action="<?php echo base_url(); ?>/login/loginAuth" method="post">
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class="form-material form-material-primary floating">
                                         <input class="form-control" type="text" id="login-username" name="login-username">
-                                        <label for="login-username">Username</label>
+                                        <label for="login-username"><?php echo lang('Security.user_name'); ?></label>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                 <div class="col-xs-12">
                                     <div class="form-material form-material-primary floating">
                                         <input class="form-control" type="password" id="login-password" name="login-password">
-                                        <label for="login-password">Password</label>
+                                        <label for="login-password"><?php echo lang('Security.password'); ?></label>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                             </div> -->
                                 <div class="form-group push-30-t">
                                     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                                        <button class="btn btn-sm btn-block btn-primary" type="submit">Log in</button>
+                                        <button class="btn btn-sm btn-block btn-primary" type="submit"><?php echo lang('Security.login_button'); ?></button>
                                     </div>
                                 </div>
                         </form>
@@ -75,57 +75,57 @@
                 <div class="push-30-t push-20 animated fadeIn">
                     <!-- Register Title -->
                     <div class="text-center">
-                        <h1 class="h3 push-10-t">Create Account</h1>
+                        <h1 class="h3 push-10-t"><?php echo lang('Security.create_account'); ?></h1>
                     </div>
 
                     <form class="js-validation-register form-horizontal push-50-t push-50" action="<?php echo base_url(); ?>/register" method="post">
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-success">
-                                    <input class="form-control" type="text" id="register-username" name="register-username" placeholder="Please enter a username">
-                                    <label for="register-username">Username</label>
+                                    <input class="form-control" type="text" id="register-username" name="register-username" placeholder="<?php echo lang('Security.user_name_prompt'); ?>">
+                                    <label for="register-username"><?php echo lang('Security.user_name'); ?></label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-success">
-                                    <input class="form-control" type="email" id="register-email" name="register-email" placeholder="Please provide your email">
-                                    <label for="register-email">Email</label>
+                                    <input class="form-control" type="email" id="register-email" name="register-email" placeholder="<?php echo lang('Security.email_prompt'); ?>">
+                                    <label for="register-email"><?php echo lang('Security.email'); ?></label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-success">
-                                    <input class="form-control" type="password" id="register-password" name="register-password" placeholder="Choose a strong password..">
-                                    <label for="register-password">Password</label>
+                                    <input class="form-control" type="password" id="register-password" name="register-password" placeholder="<?php echo lang('Security.password_prompt'); ?>">
+                                    <label for="register-password"><?php echo lang('Security.password'); ?></label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-success">
-                                    <input class="form-control" type="password" id="register-password2" name="register-password2" placeholder="..and confirm it">
-                                    <label for="register-password2">Confirm Password</label>
+                                    <input class="form-control" type="password" id="register-password2" name="register-password2" placeholder="<?php echo lang('Security.confirm_password_prompt'); ?>">
+                                    <label for="register-password2"><?php echo lang('Security.confirm_password'); ?></label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-7 col-sm-8">
                                 <label class="css-input switch switch-sm switch-success">
-                                    <input type="checkbox" id="register-terms" name="register-terms"><span></span> I agree with terms &amp; conditions
+                                    <input type="checkbox" id="register-terms" name="register-terms"><span></span> <?php echo lang('Security.terms_text'); ?>
                                 </label>
                             </div>
                             <div class="col-xs-5 col-sm-4">
                                 <div class="font-s13 text-right push-5-t">
-                                    <a href="#" data-toggle="modal" data-target="#modal-terms">View Terms</a>
+                                   <!-- <a href="#" data-toggle="modal" data-target="#modal-terms"><?php echo lang('Security.view_terms'); ?></a>-->
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                                <button class="btn btn-sm btn-block btn-success" type="submit">Create Account</button>
+                                <button class="btn btn-sm btn-block btn-success" type="submit"><?php echo lang('Security.create_account'); ?></button>
                             </div>
                         </div>
                     </form>

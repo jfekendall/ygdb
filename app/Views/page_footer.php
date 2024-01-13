@@ -1,7 +1,7 @@
 <div class='clearfix'></div>
 <footer class="clearfix" style='background:white'>
     <div class="pull-right" >
-        <small>&copy; Your Game Database unless otherwise specified. All rights reserved <?php echo date('Y'); ?></small>
+        <small>&copy; <?php echo lang('General.copyright');?> <?php echo date('Y'); ?></small>
     </div>
 </footer>
 </div>

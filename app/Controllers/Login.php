@@ -26,30 +26,22 @@ class Login extends BaseController {
      */
     public function loginAuth(): \CodeIgniter\HTTP\RedirectResponse {
         $userModel = new UserModel();
-
-        $username = $this->request->getVar('login-username');
-        $password = $this->request->getVar('login-password');
-
-        $data = $userModel->where('ygdb_username', $username)->first();
-
+        $data = $userModel->where('ygdb_username', $this->request->getVar('login-username'))->first();
         if ($data) {
-            $pass = $data['ygdb_password'];
-            $authenticatePassword = password_verify($password, $pass);
-            if ($authenticatePassword) {
+            if (password_verify($this->request->getVar('login-password'), $data['ygdb_password'])) {
                 $ses_data = [
                     'id' => $data['user_uuid'],
                     'name' => $data['ygdb_username'],
                     'isLoggedIn' => true
                 ];
-
                 $this->session->set($ses_data);
                 return redirect()->to('/');
             } else {
-                $this->session->setFlashdata('msg', 'Well butts. Nothing much going on with what you gave for credentials.');
+                $this->session->setFlashdata('msg', lang('Security.bad_credentials_message'));
                 return redirect()->to('/');
             }
         } else {
-            $this->session->setFlashdata('msg', 'Well butts. Nothing much going on with what you gave for credentials.');
+            $this->session->setFlashdata('msg', lang('Security.bad_credentials_message'));
             return redirect()->to('/');
         }
     }

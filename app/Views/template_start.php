@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>YGDB - There's a collector in all of us</title>
-    <meta name="description" content="Your Game Database - There's a collector in all of us">
+    <title>YGDB - <?php echo lang('General.site_tagline'); ?></title>
+    <meta name="description" content="Your Game Database - <?php echo lang('General.site_tagline'); ?>">
     <meta name="author" content="YGDB">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">

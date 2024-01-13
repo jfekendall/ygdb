@@ -13,7 +13,8 @@
         "symfony/yaml": "^6.4",
         "doctrine/orm": "^2.17",
         "ramsey/uuid": "^4.7",
-        "league/csv": "^9.14"
+        "league/csv": "^9.14",
+        "codeigniter4/translations": "^4.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",

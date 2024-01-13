@@ -9,13 +9,13 @@
             <div class="col-sm-6 ">
                 <div class="block">
                     <div class="block-header bg-gray-lighter">
-                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Vital Stats</h3>
+                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> <?php echo lang('VitalStats.vital_stats'); ?></h3>
                     </div>
                     <div class="block-content">
                         <table class="table table-striped">
                             <tr>
                                 <th>
-                                    Developer
+                                    <?php echo lang('VitalStats.developer'); ?>
                                 </th>
                                 <td>
                                     <?php
@@ -32,7 +32,7 @@
                             </tr>
                             <tr>
                                 <th>
-                                    Publisher
+                                    <?php echo lang('VitalStats.publisher'); ?>
                                 </th>
                                 <td>
                                     <?php
@@ -54,7 +54,9 @@
                                     ?>
                                     <tr>
                                         <th>
-                                            Release Date in <?php echo $gamedata["game_market_name_$i"]; ?>
+                                             <?php 
+                                             echo lang('VitalStats.release_date');
+                                             echo $gamedata["game_market_name_$i"]; ?>
                                         </th>
                                         <td>
                                             <?php echo date("F d, Y", strtotime($gamedata["game_{$i}_release_date"])); ?>
@@ -66,7 +68,7 @@
                             if (!empty($gamedata['game_box_text'])) {
                                 ?>
                                 <tr>
-                                    <th colspan="2">From the Box</th>
+                                    <th colspan="2"><?php echo lang('VitalStats.box_text'); ?></th>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $gamedata['game_box_text']; ?></td>
@@ -81,7 +83,7 @@
             <div class="col-sm-6 ">
                 <div class="block">
                     <div class="block-header bg-gray-lighter">
-                        <h3 class="block-title"><i class="fa fa-user"></i> Your Stats</h3>
+                        <h3 class="block-title"><i class="fa fa-user"></i> <?php echo lang('PersonalStats.personal_stats'); ?></h3>
                     </div>
                     <div class="block-content">
                         <?php
@@ -89,13 +91,13 @@
                             //add to collection to get started
                             ?>
                             <p><input type='checkbox' name='claim' value='<?php echo $gamedata['uuid'] ?>' class="has">
-                                Add to your collection for personal stats</p>
+                                <?php echo lang('VitalStats.add_to_collection'); ?></p>
                             <?php
                         } else {
                             ?>
                             <table class="table table-bordered">
                                 <tr>
-                                    <th>Status</th>
+                                    <th><?php echo lang('PersonalStats.status'); ?></th>
                                     <td>
                                         <?php
                                         $rownum = 1;
@@ -120,7 +122,7 @@
                                         continue;
                                     }
                                     echo "<tr>"
-                                    . "<th>" . ucwords(str_replace('_', ' ', $k)) . "</th>"
+                                    . "<th>" . lang("PersonalStats.$k") . "</th>"
                                     . "<td><input type='checkbox' class='stat' name='{$gamedata['uuid']}_$k' " . ($v ? 'checked' : '') . "></td>"
                                     . "</tr>";
                                 }

@@ -33,14 +33,14 @@
                             <li>
                                 <a href="<?php echo base_url(); ?>"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Your Profile</span></a>
                             </li>
-                            <li class="nav-main-heading"><span class="sidebar-mini-hide">Your Stuff</span></li>
+                            <li class="nav-main-heading"><span class="sidebar-mini-hide"><?php echo lang('General.your_stuff');?></span></li>
                             <li id='manage-collections-dropdown'>
                                 <a class="nav-submenu" data-toggle="nav-submenu" href="#">
                                     <i class="si si-badge"></i>
-                                    <span class="sidebar-mini-hide">Manage Collections</span></a>
+                                    <span class="sidebar-mini-hide"><?php echo lang('General.manage_collections');?></span></a>
                                 <ul>
                                     <li>
-                                        <?php echo anchor('collection/add', "<i class='fa fa-plus'></i> Add New"); ?>
+                                        <?php echo anchor('collection/add', "<i class='fa fa-plus'></i> ". lang('General.add_new')); ?>
                                     </li>
                                     <?php foreach ($yourSystems AS $system) { ?>
                                         <li>
@@ -63,17 +63,17 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="dropdown-header">Profile</li>
+                            <li class="dropdown-header"><?php echo lang('Profile.profile');?></li>
                             <li>
                                 <a tabindex="-1" href="javascript:void(0)">
-                                    <i class="si si-settings pull-right"></i>Settings
+                                    <i class="si si-settings pull-right"></i><?php echo lang('Profile.settings');?>
                                 </a>
                             </li>
                             <li class="divider"></li>
-                            <li class="dropdown-header">Actions</li>
+                            <li class="dropdown-header"><?php echo lang('Profile.actions');?></li>
                             <li>
                                 <a tabindex="-1" href="/logoff">
-                                    <i class="si si-logout pull-right"></i>Log out
+                                    <i class="si si-logout pull-right"></i><?php echo lang('General.logoff');?>
                                 </a>
                             </li>
                         </ul>

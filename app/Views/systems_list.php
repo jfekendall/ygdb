@@ -1,7 +1,7 @@
 <main id="main-container">
     <div class="content bg-image" style="background: #a0a0a0;">
         <div class="push-50-t push-15 clearfix">
-            <h1 class="h2 text-white push-5-t animated zoomIn"><?php echo (isset($system) ? $system : 'Pick a System'); ?></h1>
+            <h1 class="h2 text-white push-5-t animated zoomIn"><?php echo (isset($system) ? $system : lang('General.pick_system')); ?></h1>
         </div>
     </div>
     <div class="content content-boxed">
@@ -17,7 +17,7 @@
                                 <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
                             </li>
                         </ul>
-                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Systems Available</h3>
+                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> <?php echo lang('General.systems_available'); ?></h3>
                     </div>
                     <div class="block-content">
                         <?php

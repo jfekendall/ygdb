@@ -27,10 +27,10 @@
                         <table class='table table-bordered table-striped js-dataTable-full'>
                             <thead>	
                                 <tr>
-                                    <th>Have</th>
-                                    <th>Title</th>
-                                    <th class='text-center'>Market</th>
-                                    <th class='text-center'>Release Date</th>
+                                    <th><?php echo lang('VitalStats.have'); ?></th>
+                                    <th><?php echo lang('General.title'); ?></th>
+                                    <th class='text-center'><?php echo lang('VitalStats.market'); ?></th>
+                                    <th class='text-center'><?php echo lang('VitalStats.release_date'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
