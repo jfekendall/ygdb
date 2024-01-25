@@ -1,7 +1,7 @@
 <main id="main-container">
     <div class="content" style="background:rgb(44, 52, 63);">
         <div class=" clearfix">
-            <h1 class="h2 text-white push-5-t animated zoomIn"><?php echo $gamedata['game_1_title']; ?></h1>
+            <h1 class="h2 text-white push-5-t animated zoomIn"><?php echo ($personalstats['custom_name'] ? $personalstats['custom_name'] : $gamedata['game_1_title']); ?></h1>
         </div>
     </div>
     <div class="content content-boxed">
@@ -109,6 +109,12 @@
                         } else {
                             ?>
                             <table class="table table-bordered">
+                                <tr>
+                                    <th><?php echo lang('PersonalStats.custom_name'); ?></th>
+                                    <td>
+                                        <input type="text" id="custom_name" class="form-control" value="<?php echo ($personalstats['custom_name'] ? $personalstats['custom_name'] : $gamedata['game_1_title']); ?>">
+                                    </td>                                        
+                                </tr>
                                 <tr>
                                     <th><?php echo lang('PersonalStats.status'); ?></th>
                                     <td>
