@@ -31,6 +31,12 @@ class GameController extends BaseController {
                     'user_uuid' => $this->uid
                 ])->first();
 
+        if(empty($this->data['personalstats'])){
+            $this->data['personalstats'] = $collectionData->getSkel();
+            
+        }else{
+            $this->data['personalstats']['has'] = true;
+        }
         echo view('template_start');
         echo view('page_head', $this->sideBar);
         echo view('game', $this->data);
