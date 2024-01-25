@@ -13,6 +13,16 @@
                     </div>
                     <div class="block-content">
                         <table class="table table-striped">
+                             <tr>
+                                <th>
+                                    <?php echo lang('VitalStats.system'); ?>
+                                </th>
+                                <td>
+                                    <?php
+                                            echo $gamedata["system"];
+                                    ?>
+                                </td>
+                            </tr>
                             <tr>
                                 <th>
                                     <?php echo lang('VitalStats.developer'); ?>
