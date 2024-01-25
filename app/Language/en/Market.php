@@ -1,9 +1,10 @@
 <?php
 
 return[
-    'North America' => 'North America',
-    'Japan' => 'Japan',
-    'EU' => 'Europe',
-    'APAC' => 'Asia/Pacific'
+    'north_america' => 'North America',
+    'japan' => 'Japan',
+    'eu' => 'Europe',
+    'apac' => 'Asia/Pacific',
+    'pal' => 'PAL'
 ];
 

@@ -128,7 +128,7 @@ class CSVExport extends BaseController {
             $systemCollection = new AssembleCollection();
             $collection = $systemCollection->getWholeCollection($this->uid);
             foreach ($collection AS $c) {
-                
+
                 $record = [];
                 $this->getThingNames('Developer', $c);
                 $this->getThingNames('Publisher', $c);
@@ -177,7 +177,11 @@ class CSVExport extends BaseController {
             if (!is_null($game["game_{$i}_$lcthing"])) {
                 $dev = ${$thing};
                 $d = $dev->find($game["game_{$i}_$lcthing"]);
-                $game["game_{$i}_$lcthing"] = $d["{$lcthing}_name"];
+                if ($thing != 'Market') {
+                    $game["game_{$i}_$lcthing"] = $d["{$lcthing}_name"];
+                } else {
+                    $game["game_{$i}_$lcthing"] = lang('Market.' . $d["{$lcthing}_name"]);
+                }
             }
         }
     }
