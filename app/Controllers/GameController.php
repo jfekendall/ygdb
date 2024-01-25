@@ -7,6 +7,7 @@ use App\Models\Developer;
 use App\Models\Publisher;
 use App\Models\Market;
 use App\Models\Collection;
+use App\Models\System;
 
 class GameController extends BaseController {
 
@@ -23,6 +24,10 @@ class GameController extends BaseController {
         $this->data['gamedata'] = array_merge($this->data['gamedata'], $this->getThingNames('Developer', $this->data['gamedata']));
         $this->data['gamedata'] = array_merge($this->data['gamedata'], $this->getThingNames('Publisher', $this->data['gamedata']));
         $this->data['gamedata'] = array_merge($this->data['gamedata'], $this->getThingNames('Market', $this->data['gamedata']));
+        $s = new System();
+        $system = $s->find($this->data['gamedata']['system_id']);
+        $this->data['gamedata']['system'] = $system['system_name'];
+        
 
         $collectionData = new Collection();
 
