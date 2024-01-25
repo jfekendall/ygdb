@@ -56,7 +56,7 @@
                                         <th>
                                             <?php
                                             echo lang('VitalStats.release_date');
-                                            echo $gamedata["game_market_name_$i"];
+                                            echo lang('Market.'.$gamedata["game_market_name_$i"]);
                                             ?>
                                         </th>
                                         <td>

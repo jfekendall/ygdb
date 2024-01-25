@@ -113,7 +113,7 @@ class AssembleCollection extends BaseController {
         $market = [];
         for ($i = 1; $i <= $numberOfColumns; $i++) {
             if ($game["game_{$i}_market"]) {
-                $market[] = $m->translateToEnglish($game["game_{$i}_market"]);
+                $market[] = lang('Market.'.$m->translateToEnglish($game["game_{$i}_market"]));
             }
         }
         return $market;
