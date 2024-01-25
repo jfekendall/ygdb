@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Collection extends Model {
+class Collection extends BaseModel {
 
     /**
      * @param string $table Base table for this Model
@@ -16,6 +16,7 @@ class Collection extends Model {
     protected $allowedFields = [
         'game_uuid',
         'user_uuid',
+        'custom_name',
         'status',
         'physical_media',
         'with_case',
@@ -24,6 +25,8 @@ class Collection extends Model {
         'uuid'
     ];
 
+
+    
     /**
      * Method getCollectionsByUser
      * 

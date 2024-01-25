@@ -90,6 +90,14 @@ class AssembleCollection extends BaseController {
     protected function getTitles($game): array {
         $numberOfColumns = 3;
         $title = [];
+        //Return custom title if there is one
+        $c = new Collection();
+        $collRecord = $c->where('game_uuid', $game['uuid'])
+                        ->where('user_uuid', session()->get('id'))->first();
+        if (isset($collRecord['custom_name']) && $collRecord['custom_name']) {
+            return [$collRecord['custom_name']];
+        }
+        //else
         for ($i = 1; $i <= $numberOfColumns; $i++) {
             if ($game["game_{$i}_title"]) {
                 $title[] = $game["game_{$i}_title"];
@@ -113,7 +121,7 @@ class AssembleCollection extends BaseController {
         $market = [];
         for ($i = 1; $i <= $numberOfColumns; $i++) {
             if ($game["game_{$i}_market"]) {
-                $market[] = lang('Market.'.$m->translateToEnglish($game["game_{$i}_market"]));
+                $market[] = lang('Market.' . $m->translateToEnglish($game["game_{$i}_market"]));
             }
         }
         return $market;

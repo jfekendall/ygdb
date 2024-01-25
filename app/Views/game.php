@@ -100,7 +100,7 @@
                     </div>
                     <div class="block-content">
                         <?php
-                        if (empty($personalstats)) {
+                        if (!$personalstats['has']) {
                             //add to collection to get started
                             ?>
                             <p><input type='checkbox' name='claim' value='<?php echo $gamedata['uuid'] ?>' class="has">
@@ -112,7 +112,7 @@
                                 <tr>
                                     <th><?php echo lang('PersonalStats.custom_name'); ?></th>
                                     <td>
-                                        <input type="text" id="custom_name" class="form-control" value="<?php echo ($personalstats['custom_name'] ? $personalstats['custom_name'] : $gamedata['game_1_title']); ?>">
+                                        <input type="text" id="custom_name" name="<?php echo "{$gamedata['uuid']}_custom_name"; ?>" class="form-control" value="<?php echo ($personalstats['custom_name'] ? $personalstats['custom_name'] : $gamedata['game_1_title']); ?>">
                                     </td>                                        
                                 </tr>
                                 <tr>

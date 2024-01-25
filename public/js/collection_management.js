@@ -49,3 +49,18 @@ $('.stat').change(function () {
     });
 });
 
+$('#custom_name').on('blur', function () {
+    $.ajax({
+        type: "POST",
+        url: $("input[name=statAction]").val(),
+        data: "field=" + this.name + "&status=" + this.value
+    }).success(function (data) {
+        $('.toast').addClass('alert-success');
+        $('.toast').html('<i class="si si-check fa-2x"></i><br>Custom Name Saved!');
+        $('.toast').slideDown();
+        setTimeout(function () {
+            $('.toast').fadeOut('slow');
+        }, 3000);
+    });
+});
+
